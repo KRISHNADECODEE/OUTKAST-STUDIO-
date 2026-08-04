@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #7C1117;
+    --surface: #8D161D;
+    --accent: #D03412;
+    --text-primary: #F8F3EF;
+    --dark: #111111;
+    --kraft: #D4B896;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-sans), sans-serif;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* Custom Paper Grain Texture Overlay */
+.paper-grain {
+  position: relative;
+}
+
+.paper-grain::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.22;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  z-index: 1;
+}
+
+/* Utility Font Classes */
+.font-brush {
+  font-family: var(--font-brush), cursive;
+}
+
+.font-editorial {
+  font-family: var(--font-editorial), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+}
+
+.font-handwritten {
+  font-family: var(--font-handwritten), cursive;
+}
+
+/* Writing mode vertical utility */
+.writing-mode-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* Hide Scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom Clip Paths for Torn Paper Rips */
+.clip-path-torn-top-right {
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 70% 100%, 30% 80%, 0 100%);
+}
+
+/* 3. Torn paper edges as clip-paths — for panels that rip on one side */
+.clip-torn-bottom {
+  clip-path: polygon(
+    0 0, 100% 0, 100% 92%, 92% 97%, 84% 91%, 74% 98%, 66% 92%,
+    56% 99%, 46% 93%, 36% 99%, 27% 93%, 18% 98%, 9% 92%, 0 97%
+  );
+}
+.clip-torn-top {
+  clip-path: polygon(
+    0 8%, 9% 3%, 18% 9%, 27% 4%, 36% 10%, 46% 4%, 56% 10%,
+    66% 3%, 74% 9%, 84% 3%, 92% 8%, 100% 3%, 100% 100%, 0 100%
+  );
+}
+.clip-torn-right {
+  clip-path: polygon(
+    0 0, 96% 0, 99% 8%, 94% 17%, 99% 26%, 93% 35%, 98% 44%,
+    93% 53%, 99% 62%, 94% 71%, 98% 80%, 93% 90%, 97% 100%, 0 100%
+  );
+}
+
+/* 6. Noise overlay variants — layered grain flavours */
+.grain-scratches::before,
+.grain-dust::before,
+.grain-paper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.grain-scratches::before {
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.02 0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23s)'/%3E%3C/svg%3E");
+}
+.grain-dust::before {
+  opacity: 0.14;
+  mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='d'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23d)'/%3E%3C/svg%3E");
+}
+.grain-paper::before {
+  opacity: 0.3;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.045' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+}
+
+/* 1. Custom cursor — hide the native pointer on precise-pointer devices only */
+@media (hover: hover) and (pointer: fine) {
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: none !important;
+  }
+}
+
+/* Respect reduced-motion: kill the decorative loops */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #7C1117;
+}
+::-webkit-scrollbar-thumb {
+  background: #D03412;
+  border-radius: 3px;
+}
