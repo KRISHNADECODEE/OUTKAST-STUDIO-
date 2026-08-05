@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "OUTKAST STUDIO",
+    name: "OUTKAST STUDIOS",
     short_name: "OUTKAST",
     description:
       "Creative Websites for Brands That Refuse To Look Ordinary. AI UGC Ads, Meta Ads, Brand Building.",

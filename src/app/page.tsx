@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
+import ScrollRail from "@/components/ScrollRail";
 import HeroSection from "@/components/sections/HeroSection";
-import PhilosophySection from "@/components/sections/PhilosophySection";
+import WhatWeDoSection from "@/components/sections/WhatWeDoSection";
 import ApproachSection from "@/components/sections/ApproachSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import PortfolioSection from "@/components/sections/PortfolioSection";
@@ -19,6 +20,7 @@ import { SectionSeam } from "@/components/ui/PaperAssets";
    the next, so these have to stay in sync with each section's own bg class. */
 const DEEP = "#7C1117";
 const SURFACE = "#8D161D";
+const DARK = "#5C0F14";
 const INK = "#111111";
 
 export default function Home() {
@@ -27,12 +29,15 @@ export default function Home() {
       {/* Fixed Sticky Header */}
       <Navbar />
 
+      {/* Live section rail — the ring tracks the section you're reading */}
+      <ScrollRail />
+
       {/* 14 Sequential Editorial Sections, separated by torn paper seams */}
       <HeroSection />
-      <SectionSeam from={DEEP} to={SURFACE} />
+      <SectionSeam from={DEEP} to={DARK} />
 
-      <PhilosophySection />
-      <SectionSeam from={SURFACE} to={DEEP} flip />
+      <WhatWeDoSection />
+      <SectionSeam from={DARK} to={DEEP} flip />
 
       <ApproachSection />
       <SectionSeam from={DEEP} to={SURFACE} />

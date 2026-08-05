@@ -93,7 +93,7 @@ export const OutkastMonogram = ({
   </svg>
 );
 
-/* Full lockup: wordmark + letterspaced STUDIO, as on the brand sheet. */
+/* Full lockup: wordmark + letterspaced STUDIOS, as on the brand sheet. */
 export const OutkastLogo = ({
   className = "h-9",
   markClassName = "text-[#F8F3EF]",
@@ -108,7 +108,7 @@ export const OutkastLogo = ({
     <span
       className={`font-sans font-semibold uppercase leading-none tracking-[0.42em] text-[0.5rem] md:text-[0.62rem] -mt-0.5 mr-[0.1em] ${studioClassName}`}
     >
-      Studio
+      Studios
     </span>
   </div>
 );

@@ -61,7 +61,7 @@ export default function FaqSection() {
           </h2>
 
           <p className="text-base text-[#F8F3EF]/80 font-mono leading-relaxed border-l-2 border-[#D03412] pl-4">
-            Everything you need to know about partnering with OUTKAST STUDIO.
+            Everything you need to know about partnering with OUTKAST STUDIOS.
           </p>
         </div>
 

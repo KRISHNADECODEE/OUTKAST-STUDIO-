@@ -110,8 +110,10 @@ export default function AiUgcSection() {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
             {phoneMockups.map((phone, i) => (
-              <div
+              <button
                 key={i}
+                type="button"
+                aria-label={`Preview ${phone.title} — ${phone.category}`}
                 onClick={() =>
                   setSelectedVideo({
                     title: phone.title,
@@ -121,7 +123,7 @@ export default function AiUgcSection() {
                     thumbnail: phone.img,
                   })
                 }
-                className="interactive relative aspect-[9/18] bg-[#111111] rounded-[22px] border-2 border-[#D03412]/40 p-2 overflow-hidden shadow-2xl group hover:border-[#D03412] transition-all duration-300 cursor-pointer hover:-translate-y-2"
+                className="interactive relative w-full text-left aspect-[9/18] bg-[#111111] rounded-[22px] border-2 border-[#D03412]/40 p-2 overflow-hidden shadow-2xl group hover:border-[#D03412] focus-visible:border-[#D03412] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D03412] transition-all duration-300 cursor-pointer hover:-translate-y-2"
               >
                 {/* Top Notch */}
                 <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-14 h-2.5 bg-[#111111] rounded-full z-20 border border-white/10" />
@@ -154,7 +156,7 @@ export default function AiUgcSection() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
 

@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, CheckCircle, Send } from "lucide-react";
 import confetti from "canvas-confetti";
+import { useModalChrome } from "./useModalChrome";
 
 interface ProjectModalProps {
   isOpen: boolean;
@@ -20,6 +21,8 @@ export default function ProjectModal({ isOpen, onClose }: ProjectModalProps) {
     budget: "$5k - $10k",
     message: "",
   });
+
+  useModalChrome(isOpen, onClose);
 
   const servicesList = [
     "Portfolio Website",
@@ -133,7 +136,7 @@ export default function ProjectModal({ isOpen, onClose }: ProjectModalProps) {
                       placeholder="Aarav Malhotra"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-[#7C1117] border border-[#D03412]/30 p-3 text-sm rounded-sm focus:outline-none focus:border-[#D03412]"
+                      className="w-full bg-[#7C1117] border border-[#D03412]/30 p-3 text-base md:text-sm rounded-sm focus:outline-none focus:border-[#D03412]"
                     />
                   </div>
                   <div>
@@ -144,7 +147,7 @@ export default function ProjectModal({ isOpen, onClose }: ProjectModalProps) {
                       placeholder="Oukast.studio2026@gmail.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-[#7C1117] border border-[#D03412]/30 p-3 text-sm rounded-sm focus:outline-none focus:border-[#D03412]"
+                      className="w-full bg-[#7C1117] border border-[#D03412]/30 p-3 text-base md:text-sm rounded-sm focus:outline-none focus:border-[#D03412]"
                     />
                   </div>
                 </div>
@@ -156,7 +159,7 @@ export default function ProjectModal({ isOpen, onClose }: ProjectModalProps) {
                     placeholder="Tell us about your brand, goals, and timeline..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full bg-[#7C1117] border border-[#D03412]/30 p-3 text-sm rounded-sm focus:outline-none focus:border-[#D03412]"
+                    className="w-full bg-[#7C1117] border border-[#D03412]/30 p-3 text-base md:text-sm rounded-sm focus:outline-none focus:border-[#D03412]"
                   />
                 </div>
 

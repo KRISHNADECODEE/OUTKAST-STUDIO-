@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Syne, Plus_Jakarta_Sans, Permanent_Marker, Caveat } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
-import CustomCursor from "@/components/CustomCursor";
 import LoadingScreen from "@/components/LoadingScreen";
+import IdleAnimations from "@/components/IdleAnimations";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -31,29 +31,29 @@ const caveat = Caveat({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://outkast-studio.vercel.app"),
-  title: "OUTKAST STUDIO | Creative Websites • AI Advertising • Brand Building",
+  title: "OUTKAST STUDIOS | Creative Websites • AI Advertising • Brand Building",
   description:
     "We craft bold, high-performance websites and digital experiences for brands that don't follow trends, they set them. AI UGC Ads, Meta Ads, Brand Building.",
   keywords: [
-    "OUTKAST STUDIO",
+    "OUTKAST STUDIOS",
     "Creative Agency",
     "AI UGC Ads",
     "Portfolio Websites",
     "Brand Building",
     "Meta Ads",
   ],
-  authors: [{ name: "OUTKAST STUDIO" }],
+  authors: [{ name: "OUTKAST STUDIOS" }],
   openGraph: {
-    title: "OUTKAST STUDIO | Creative Websites • AI Advertising",
+    title: "OUTKAST STUDIOS | Creative Websites • AI Advertising",
     description: "Creative Websites for Brands That Refuse To Look Ordinary.",
     url: "https://outkast-studio.vercel.app",
-    siteName: "OUTKAST STUDIO",
+    siteName: "OUTKAST STUDIOS",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "OUTKAST STUDIO | Creative Websites • AI Advertising",
+    title: "OUTKAST STUDIOS | Creative Websites • AI Advertising",
     description: "Creative Websites for Brands That Refuse To Look Ordinary.",
   },
   icons: {
@@ -80,7 +80,7 @@ export default function RootLayout({
     <html lang="en" className={`${syne.variable} ${plusJakarta.variable} ${permanentMarker.variable} ${caveat.variable}`}>
       <body className="bg-[#7C1117] text-[#F8F3EF] antialiased selection:bg-[#D03412] selection:text-white relative">
         <LoadingScreen />
-        <CustomCursor />
+        <IdleAnimations />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

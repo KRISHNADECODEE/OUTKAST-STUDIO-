@@ -60,7 +60,7 @@ export const MadeToConvertBadge = ({ className = "" }: { className?: string }) =
 
 /* Rotating circular stamp. */
 export const CircularStamp = ({
-  text = "OUTKAST STUDIO • CREATED WITH PURPOSE • BUILT DIFFERENT • ",
+  text = "OUTKAST STUDIOS • CREATED WITH PURPOSE • BUILT DIFFERENT • ",
   className = "w-28 h-28 md:w-36 md:h-36",
 }: {
   text?: string;
@@ -91,36 +91,5 @@ export const CircularStamp = ({
   );
 };
 
-/* Vertical section pagination rail. */
-export const VerticalPagination = ({
-  activeIndex = 1,
-  totalIndex = 6,
-}: {
-  activeIndex?: number;
-  totalIndex?: number;
-}) => (
-  <div className="hidden lg:flex flex-col items-center gap-6 select-none">
-    <span className="text-xs font-mono text-[#F8F3EF]/60 tracking-widest tabular-nums">
-      {String(activeIndex).padStart(2, "0")} / {String(totalIndex).padStart(2, "0")}
-    </span>
-
-    <div className="flex flex-col items-center gap-3 relative py-2">
-      <div className="absolute top-0 bottom-0 w-px bg-[#D03412]/30 left-1/2 -translate-x-1/2" />
-      {Array.from({ length: totalIndex }).map((_, i) => (
-        <div
-          key={i}
-          className={`w-3 h-3 rounded-full transition-all duration-300 z-10 ${
-            i + 1 === activeIndex
-              ? "bg-[#D03412] ring-4 ring-[#D03412]/30 scale-125"
-              : "bg-[#7C1117] border border-[#F8F3EF]/40"
-          }`}
-        />
-      ))}
-    </div>
-
-    <div className="writing-mode-vertical text-[10px] font-mono tracking-widest text-[#F8F3EF]/40 uppercase mt-4 flex items-center gap-2">
-      <span>SCROLL</span>
-      <span>↓</span>
-    </div>
-  </div>
-);
+/* Section pagination now lives in the live, scroll-driven ScrollRail
+   (src/components/ScrollRail.tsx). */

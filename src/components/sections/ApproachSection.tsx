@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { VerticalPagination, GiantBrushX, CircularStamp } from "../ui/BrandAssets";
+import { GiantBrushX, CircularStamp } from "../ui/BrandAssets";
 import { ArrowUpRight } from "lucide-react";
 
 export default function ApproachSection() {
@@ -39,10 +39,8 @@ export default function ApproachSection() {
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
         
-        {/* Left Sidebar */}
-        <div className="hidden lg:block lg:col-span-1 border-r border-[#D03412]/20 pr-4">
-          <VerticalPagination activeIndex={3} totalIndex={6} />
-        </div>
+        {/* Left gutter — pagination now lives in the fixed ScrollRail */}
+        <div className="hidden lg:block lg:col-span-1" />
 
         {/* Headline Left */}
         <div className="lg:col-span-6 space-y-6">

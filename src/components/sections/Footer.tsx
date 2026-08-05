@@ -105,7 +105,7 @@ export default function Footer() {
 
         {/* Bottom Rights & Stamp */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-4 text-xs font-mono text-[#F8F3EF]/50">
-          <p>© OUTKAST STUDIO 2026. ALL RIGHTS RESERVED.</p>
+          <p>© OUTKAST STUDIOS 2026. ALL RIGHTS RESERVED.</p>
           <div className="flex items-center gap-6">
             <span className="text-[#D03412] uppercase font-bold">BUILT DIFFERENT.</span>
             <span>MADE TO OUTKAST.</span>

@@ -42,6 +42,11 @@
   opacity: 0.22;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  /* Tile a fixed 200px raster. Without this the feTurbulence is rasterised at
+     the element's full size — a unique multi-megapixel noise texture per
+     section — which is the single most expensive thing on the page. */
+  background-size: 200px 200px;
+  background-repeat: repeat;
   z-index: 1;
 }
 
@@ -108,6 +113,9 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
+  /* Tiled for the same reason as .paper-grain — see above. */
+  background-size: 200px 200px;
+  background-repeat: repeat;
   z-index: 1;
 }
 .grain-scratches::before {
@@ -126,12 +134,12 @@
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.045' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
 }
 
-/* 1. Custom cursor — hide the native pointer on precise-pointer devices only */
-@media (hover: hover) and (pointer: fine) {
-  html.has-custom-cursor,
-  html.has-custom-cursor * {
-    cursor: none !important;
-  }
+/* Decorative loops (marquees, rotating stamps) keep the compositor busy even
+   when they are nowhere near the viewport. IdleAnimations tags the offscreen
+   ones so they cost nothing until scrolled to. */
+[data-offscreen="true"],
+[data-offscreen="true"] * {
+  animation-play-state: paused !important;
 }
 
 /* Respect reduced-motion: kill the decorative loops */

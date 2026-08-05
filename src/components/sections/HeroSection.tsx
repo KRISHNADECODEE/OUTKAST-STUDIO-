@@ -38,7 +38,7 @@ export default function HeroSection() {
         {/* Left / Center Section: GIANT BRAND + EDITORIAL HEADLINE */}
         <div className="lg:col-span-7 space-y-6">
 
-          <SectionCounter index={1} label="Outkast Studio" />
+          <SectionCounter index={1} label="Outkast Studios" />
 
           {/* Massive OUTKAST Title (Exact Mockup Match) */}
           <div className="relative select-none">

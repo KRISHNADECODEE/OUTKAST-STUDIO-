@@ -15,15 +15,15 @@ export default function PortfolioSection() {
       tagline: "High-End Mystic & Luxury Experience",
       category: "LUXURY PORTFOLIO",
       url: "https://the-masked-astrologer-premium.vercel.app/",
-      img: "/assets/paper-bg.jpg",
+      img: "/assets/masked-astrologer.jpg",
       headline: "Mystic Redefined.",
     },
     {
-      title: "SU TOUR & TRAVEL",
+      title: "SU TOUR & TRAVELS",
       tagline: "Premium Luxury Travel & Escapes",
       category: "TRAVEL PORTFOLIO",
       url: "https://sutourandtravel.in/",
-      img: "/assets/ugc-fashion.jpg",
+      img: "/assets/su-tour-travels.jpg",
       headline: "Adventure Awaits.",
     },
     {
@@ -31,7 +31,7 @@ export default function PortfolioSection() {
       tagline: "High Fashion Apparel & Culture",
       category: "E-COMMERCE & FASHION",
       url: "https://xtrm-gamma.vercel.app/",
-      img: "/assets/ugc-fashion.jpg",
+      img: "/assets/xtrm.jpg",
       headline: "Built Different.",
     },
     {
@@ -39,7 +39,7 @@ export default function PortfolioSection() {
       tagline: "Bespoke Fashion & Luxury Atelier",
       category: "BOUTIQUE FASHION",
       url: "https://om-ladies-tailor.vercel.app/",
-      img: "/assets/ugc-skincare.jpg",
+      img: "/assets/om-ladies-tailor.jpg",
       headline: "Elegance Craft.",
     },
     {
@@ -148,6 +148,7 @@ export default function PortfolioSection() {
                   src={project.img}
                   alt={project.title}
                   fill
+                  sizes="(min-width: 768px) 400px, (min-width: 640px) 360px, 300px"
                   className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-80" />

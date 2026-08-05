@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { VerticalPagination, GiantBrushX } from "../ui/BrandAssets";
+import { GiantBrushX } from "../ui/BrandAssets";
 import { Monitor, Megaphone, Calendar, Cpu, Landmark, Flame } from "lucide-react";
 
 export default function ServicesSection() {
@@ -68,10 +68,8 @@ export default function ServicesSection() {
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative z-10">
         
-        {/* Left Sidebar */}
-        <div className="hidden lg:block lg:col-span-1 border-r border-[#D03412]/20 pr-4">
-          <VerticalPagination activeIndex={4} totalIndex={6} />
-        </div>
+        {/* Left gutter — pagination now lives in the fixed ScrollRail */}
+        <div className="hidden lg:block lg:col-span-1" />
 
         {/* Left Content Column */}
         <div className="lg:col-span-4 space-y-6 sticky top-28">
@@ -98,7 +96,7 @@ export default function ServicesSection() {
           <div className="pt-8 space-y-1 text-[10px] font-mono text-[#D03412] uppercase font-bold tracking-widest">
             <p>BUILT DIFFERENT.</p>
             <p>MADE TO OUTKAST.</p>
-            <p className="text-[#F8F3EF]/50">OUTKAST STUDIO © 2026</p>
+            <p className="text-[#F8F3EF]/50">OUTKAST STUDIOS © 2026</p>
           </div>
         </div>
 
