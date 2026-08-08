@@ -63,6 +63,14 @@ export default function AiUgcSection() {
       img: "/assets/greek-statue.jpg",
       title: "Coastal Escape Experience",
     },
+    {
+      category: "PRODUCT REVIEW",
+      views: "2.4M",
+      ctr: "9.6%",
+      img: "/assets/ugc-jewelry-poster.jpg",
+      video: "/videos/ugc-jewelry.mp4",
+      title: "Ring Showcase Review Hook",
+    },
   ];
 
   return (
@@ -141,7 +149,8 @@ export default function AiUgcSection() {
             <MadeToConvertBadge />
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
+          {/* 6 cards divide evenly at every breakpoint — no orphan row. */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 md:gap-6">
             {phoneMockups.map((phone, i) => (
               <button
                 key={i}
@@ -169,6 +178,7 @@ export default function AiUgcSection() {
                       src={phone.video}
                       poster={phone.img}
                       alt={phone.category}
+                      sizes="(min-width: 1024px) 16vw, (min-width: 640px) 33vw, 50vw"
                       className="opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                     />
                   ) : (
@@ -176,7 +186,7 @@ export default function AiUgcSection() {
                       src={phone.img}
                       alt={phone.category}
                       fill
-                      sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 50vw"
+                      sizes="(min-width: 1024px) 16vw, (min-width: 640px) 33vw, 50vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
                     />
                   )}
