@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Play } from "lucide-react";
 import { useModalChrome } from "./useModalChrome";
@@ -14,11 +14,23 @@ interface VideoModalProps {
     views: string;
     ctr: string;
     thumbnail: string;
+    /** Real clip. Entries without one still render the placeholder card. */
+    video?: string;
   } | null;
 }
 
 export default function VideoModal({ isOpen, onClose, videoData }: VideoModalProps) {
   useModalChrome(isOpen, onClose);
+
+  /* Opening the modal is a user gesture, so sound is usually permitted. When
+     the browser refuses anyway, retry muted rather than showing a dead frame. */
+  const attachVideo = useCallback((el: HTMLVideoElement | null) => {
+    if (!el) return;
+    el.play().catch(() => {
+      el.muted = true;
+      void el.play().catch(() => {});
+    });
+  }, []);
 
   /* Hold on to the last selection so the close animation has something to
      render — the parent nulls videoData and isOpen in the same tick. */
@@ -57,6 +69,22 @@ export default function VideoModal({ isOpen, onClose, videoData }: VideoModalPro
               backgroundPosition: "center",
             }}
           >
+            {/* The clip itself, filling the frame behind the chrome. */}
+            {shown.video && (
+              <video
+                ref={attachVideo}
+                key={shown.video}
+                src={shown.video}
+                poster={shown.thumbnail}
+                controls
+                autoPlay
+                loop
+                playsInline
+                aria-label={`${shown.title} — AI UGC ad`}
+                className="absolute inset-0 h-full w-full object-cover bg-[#111111]"
+              />
+            )}
+
             {/* Top Bar */}
             <div className="flex items-center justify-between z-10">
               <span className="px-3 py-1 bg-[#D03412] text-[#F8F3EF] text-[10px] font-mono tracking-widest uppercase rounded-full font-bold">
@@ -71,18 +99,24 @@ export default function VideoModal({ isOpen, onClose, videoData }: VideoModalPro
               </button>
             </div>
 
-            {/* Simulated Play Interface */}
-            <div className="my-auto text-center z-10 flex flex-col items-center">
-              <div className="w-16 h-16 rounded-full bg-[#D03412]/90 border border-white/40 flex items-center justify-center shadow-xl animate-pulse cursor-pointer">
-                <Play size={28} className="fill-white text-white ml-1" />
+            {/* Placeholder — only for entries that have no clip yet. */}
+            {!shown.video && (
+              <div className="my-auto text-center z-10 flex flex-col items-center">
+                <div className="w-16 h-16 rounded-full bg-[#D03412]/90 border border-white/40 flex items-center justify-center shadow-xl animate-pulse">
+                  <Play size={28} className="fill-white text-white ml-1" />
+                </div>
+                <p className="mt-4 text-xs font-mono tracking-widest text-[#F8F3EF]/90 uppercase">
+                  Sample coming soon
+                </p>
               </div>
-              <p className="mt-4 text-xs font-mono tracking-widest text-[#F8F3EF]/90 uppercase">
-                AI UGC AD SAMPLE PLAYING
-              </p>
-            </div>
+            )}
 
-            {/* Bottom Details */}
-            <div className="bg-[#111111]/80 backdrop-blur-sm p-4 rounded-xl border border-[#D03412]/30 space-y-2 z-10">
+            {/* Bottom Details — lifted clear of the native control bar. */}
+            <div
+              className={`bg-[#111111]/80 backdrop-blur-sm p-4 rounded-xl border border-[#D03412]/30 space-y-2 z-10 ${
+                shown.video ? "mb-12" : ""
+              }`}
+            >
               <div className="flex justify-between text-xs font-mono">
                 <span className="text-white/70">{shown.title}</span>
                 <span className="text-[#D03412] font-bold">HIGH CONVERTING</span>

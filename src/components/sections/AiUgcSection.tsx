@@ -6,6 +6,7 @@ import { MadeToConvertBadge } from "../ui/BrandAssets";
 import { Play, ChevronRight, ArrowUpRight } from "lucide-react";
 import VideoModal from "../VideoModal";
 import CinematicVideo from "../ui/CinematicVideo";
+import InlineLoopVideo from "../ui/InlineLoopVideo";
 
 export default function AiUgcSection() {
   const [selectedVideo, setSelectedVideo] = useState<{
@@ -14,14 +15,24 @@ export default function AiUgcSection() {
     views: string;
     ctr: string;
     thumbnail: string;
+    video?: string;
   } | null>(null);
 
-  const phoneMockups = [
+  /* `img` doubles as the poster frame for entries that have a `video`. */
+  const phoneMockups: {
+    category: string;
+    views: string;
+    ctr: string;
+    img: string;
+    title: string;
+    video?: string;
+  }[] = [
     {
       category: "SKINCARE BRAND",
       views: "3.2M",
       ctr: "8.7%",
-      img: "/assets/ugc-skincare.jpg",
+      img: "/assets/ugc-skincare-poster.jpg",
+      video: "/videos/ugc-skincare.mp4",
       title: "Glow Serum AI UGC Hook",
     },
     {
@@ -143,6 +154,7 @@ export default function AiUgcSection() {
                     views: phone.views,
                     ctr: phone.ctr,
                     thumbnail: phone.img,
+                    video: phone.video,
                   })
                 }
                 className="interactive relative w-full text-left aspect-[9/18] bg-[#111111] rounded-[22px] border-2 border-[#D03412]/40 p-2 overflow-hidden shadow-2xl group hover:border-[#D03412] focus-visible:border-[#D03412] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D03412] transition-all duration-300 cursor-pointer hover:-translate-y-2"
@@ -152,13 +164,22 @@ export default function AiUgcSection() {
 
                 {/* Inner Screen */}
                 <div className="relative w-full h-full rounded-[16px] overflow-hidden bg-[#7C1117]">
-                  <Image
-                    src={phone.img}
-                    alt={phone.category}
-                    fill
-                    sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 50vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
-                  />
+                  {phone.video ? (
+                    <InlineLoopVideo
+                      src={phone.video}
+                      poster={phone.img}
+                      alt={phone.category}
+                      className="opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                    />
+                  ) : (
+                    <Image
+                      src={phone.img}
+                      alt={phone.category}
+                      fill
+                      sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 50vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
+                    />
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-80" />
 
                   {/* Play Icon */}
