@@ -4,35 +4,16 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Plus, Minus } from "lucide-react";
 import { BackgroundPattern, NoiseOverlay, SectionCounter } from "../ui/PaperAssets";
+import { FAQS } from "@/lib/site-data";
 
 export default function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-  const faqs = [
-    {
-      q: "How long does a website take?",
-      a: "Our typical custom web project turnaround is 2 to 4 weeks, depending on design complexity, custom GSAP animations, and asset readiness.",
-    },
-    {
-      q: "Do you offer monthly content?",
-      a: "Yes! Our Creative 30 Days Content Calendar and AI UGC Ads packages provide continuous monthly content creation designed to keep your brand consistently active.",
-    },
-    {
-      q: "Do you run Meta Ads?",
-      a: "Absolutely. We manage data-driven ad campaigns on Facebook & Instagram, pairing our high-converting AI UGC creatives with precision targeting to achieve high ROAS.",
-    },
-    {
-      q: "What is AI UGC Ads?",
-      a: "AI UGC (User Generated Content) Ads use hyper-realistic AI creators, voice models, and hooks tailored to look 100% organic on TikTok, Reels, and Shorts.",
-    },
-    {
-      q: "Do you work worldwide?",
-      a: "Yes! We work with ambitious brands worldwide across 18+ countries including USA, UK, UAE, India, Europe, and Australia.",
-    },
-  ];
+  /* Shared with the FAQPage JSON-LD so the two can never disagree. */
+  const faqs = FAQS;
 
   return (
-    <section className="relative py-28 px-6 md:px-12 bg-[#8D161D] overflow-hidden border-t border-b border-[#D03412]/30 paper-grain">
+    <section id="faq" className="relative py-28 px-6 md:px-12 bg-[#8D161D] overflow-hidden border-t border-b border-[#D03412]/30 paper-grain">
       
       {/* Texture Layer */}
       <div className="absolute inset-0 opacity-30 pointer-events-none mix-blend-multiply">
@@ -40,6 +21,7 @@ export default function FaqSection() {
           src="/assets/paper-bg.jpg"
           alt="Paper texture background"
           fill
+          sizes="100vw"
           className="object-cover"
         />
       </div>

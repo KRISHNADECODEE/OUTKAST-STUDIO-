@@ -366,7 +366,7 @@ export const SectionDivider = ({
 
 export const SectionCounter = ({
   index,
-  total = 14,
+  total = 13,
   label,
   className = "",
 }: {

@@ -48,7 +48,7 @@ export default function WhySection() {
   ];
 
   return (
-    <section className="relative py-28 px-6 md:px-12 bg-[#8D161D] overflow-hidden border-t border-b border-[#D03412]/30 paper-grain">
+    <section id="why" className="relative py-28 px-6 md:px-12 bg-[#8D161D] overflow-hidden border-t border-b border-[#D03412]/30 paper-grain">
       
       {/* Texture Layer */}
       <div className="absolute inset-0 opacity-30 pointer-events-none mix-blend-multiply">
@@ -56,6 +56,7 @@ export default function WhySection() {
           src="/assets/paper-bg.jpg"
           alt="Paper background"
           fill
+          sizes="100vw"
           className="object-cover"
         />
       </div>
@@ -73,7 +74,7 @@ export default function WhySection() {
 
         {/* Section Header */}
         <div className="max-w-2xl space-y-4">
-          <SectionCounter index={6} label="Results" />
+          <SectionCounter index={6} label="Why Outkast" />
 
           <div className="flex items-center gap-3 text-xs font-mono tracking-widest text-[#D03412]">
             <span className="px-3 py-1 border border-[#D03412]/40 rounded-full bg-[#7C1117]/60 uppercase font-bold">

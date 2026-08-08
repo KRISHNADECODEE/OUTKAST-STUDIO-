@@ -33,6 +33,7 @@ export default function ApproachSection() {
           src="/assets/paper-bg.jpg"
           alt="Paper texture background"
           fill
+          sizes="100vw"
           className="object-cover"
         />
       </div>
@@ -46,7 +47,7 @@ export default function ApproachSection() {
         <div className="lg:col-span-6 space-y-6">
           <div className="flex items-center gap-3 text-xs font-mono tracking-widest text-[#D03412]">
             <span className="border-b border-[#D03412] pb-0.5 font-bold uppercase">
-              OUR APPROACH • 03 / 06
+              OUR APPROACH • 03 / 13
             </span>
           </div>
 
@@ -73,6 +74,7 @@ export default function ApproachSection() {
               src="/assets/greek-statue.jpg"
               alt="Greek Statue Torn Sculpture Artwork"
               fill
+              sizes="(min-width: 1024px) 24rem, 100vw"
               className="object-cover group-hover:scale-105 transition-transform duration-700"
             />
 

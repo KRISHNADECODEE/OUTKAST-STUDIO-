@@ -55,6 +55,7 @@ export default function ServicesSection() {
           src="/assets/paper-bg.jpg"
           alt="Paper texture background"
           fill
+          sizes="100vw"
           className="object-cover"
         />
       </div>
@@ -75,7 +76,7 @@ export default function ServicesSection() {
         <div className="lg:col-span-4 space-y-6 sticky top-28">
           <div className="flex items-center gap-3 text-xs font-mono tracking-widest text-[#D03412]">
             <span className="border-b border-[#D03412] pb-0.5 font-bold uppercase">
-              WHAT WE DO • 04 / 06
+              SERVICES • 04 / 13
             </span>
           </div>
 

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { MadeToConvertBadge } from "../ui/BrandAssets";
 import { Play, ChevronRight, ArrowUpRight } from "lucide-react";
 import VideoModal from "../VideoModal";
+import CinematicVideo from "../ui/CinematicVideo";
 
 export default function AiUgcSection() {
   const [selectedVideo, setSelectedVideo] = useState<{
@@ -62,6 +63,7 @@ export default function AiUgcSection() {
           src="/assets/paper-bg.jpg"
           alt="Wrinkled paper texture"
           fill
+          sizes="100vw"
           className="object-cover"
         />
       </div>
@@ -73,7 +75,7 @@ export default function AiUgcSection() {
           <div className="space-y-4 max-w-2xl">
             <div className="flex items-center gap-3 text-xs font-mono tracking-widest text-[#D03412]">
               <span className="border-b border-[#D03412] pb-0.5 font-bold uppercase">
-                08 / 06 • AI UGC SHOWCASE
+                08 / 13 • AI UGC SHOWCASE
               </span>
             </div>
 
@@ -99,6 +101,26 @@ export default function AiUgcSection() {
             </a>
           </div>
         </div>
+
+        {/* Split-screen comparison reel */}
+        <article className="relative">
+          <div className="flex items-baseline justify-between gap-4 mb-4">
+            <h3 className="text-sm font-mono font-bold uppercase tracking-[0.2em] text-[#D03412]">
+              Standard Ad vs. AI UGC Ad
+            </h3>
+            <span className="text-[10px] font-mono uppercase tracking-widest text-[#F8F3EF]/50">
+              Same product · same spend
+            </span>
+          </div>
+
+          <CinematicVideo
+            src="/videos/ai-ugc-comparison.mp4"
+            webmSrc="/videos/ai-ugc-comparison.webm"
+            poster="/assets/ugc-fashion.jpg"
+            label="Standard Ad vs. AI UGC Ad"
+            ratio="16/9"
+          />
+        </article>
 
         {/* 5 Phone Deck Deck with Floating Made To Convert Badge (Exact Mockup 2 Match) */}
         <div className="relative pt-6">
@@ -134,6 +156,7 @@ export default function AiUgcSection() {
                     src={phone.img}
                     alt={phone.category}
                     fill
+                    sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 50vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-80" />

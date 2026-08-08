@@ -5,6 +5,7 @@ import Image from "next/image";
 import ProjectModal from "../ProjectModal";
 import { ArrowUpRight } from "lucide-react";
 import { BrushStroke, Handwritten } from "../ui/BrushAssets";
+import CapacityStatus from "../ui/CapacityStatus";
 import {
   BackgroundPattern,
   NoiseOverlay,
@@ -24,6 +25,7 @@ export default function HeroSection() {
           src="/assets/paper-bg.jpg"
           alt="Dark red paper texture"
           fill
+          sizes="100vw"
           className="object-cover"
           priority
         />
@@ -40,24 +42,25 @@ export default function HeroSection() {
 
           <SectionCounter index={1} label="Outkast Studios" />
 
-          {/* Massive OUTKAST Title (Exact Mockup Match) */}
-          <div className="relative select-none">
-            <h1 className="text-7xl sm:text-9xl lg:text-[160px] xl:text-[180px] font-editorial font-extrabold leading-[0.82] tracking-tighter text-[#F8F3EF]/90 uppercase opacity-95">
+          {/* Wordmark — decorative, the brand name is already the site title
+              and the nav logo, so it is not the document heading. */}
+          <div className="relative select-none" aria-hidden="true">
+            <p className="text-7xl sm:text-9xl lg:text-[160px] xl:text-[180px] font-editorial font-extrabold leading-[0.82] tracking-tighter text-[#F8F3EF]/90 uppercase opacity-95">
               OUTKAST
-            </h1>
+            </p>
           </div>
 
-          {/* Editorial Sub-Headline */}
+          {/* The page's single H1 */}
           <div className="space-y-1 pt-2">
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-editorial font-bold leading-[0.92] uppercase text-[#F8F3EF] tracking-tight">
-              CREATIVE WEBSITES
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-editorial font-bold leading-[0.92] uppercase text-[#F8F3EF] tracking-tight">
+              Bold Digital Experiences
               <br />
-              FOR BRANDS
+              &amp; High-Converting Campaigns
               <br />
-              THAT REFUSE
+              for Brands That Refuse
               <br />
-              TO LOOK ORDINARY<span className="text-[#D03412] font-bold">.</span>
-            </h2>
+              to Look Ordinary<span className="text-[#D03412] font-bold">.</span>
+            </h1>
 
             {/* Painted rule under the headline */}
             <BrushStroke variant="tapered" className="w-56 h-4 text-[#D03412] mt-3" />
@@ -66,29 +69,40 @@ export default function HeroSection() {
           {/* Paragraph & CTA Row */}
           <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-6 items-end border-t border-[#D03412]/20">
             
-            {/* Left Paragraph & Button */}
-            <div className="space-y-4">
+            {/* Left Paragraph & primary conversion actions */}
+            <div className="space-y-5">
               <p className="text-xs sm:text-sm font-mono text-[#F8F3EF]/80 leading-relaxed max-w-xs">
                 We design digital experiences that are bold, original and unforgettable.
               </p>
 
-              <button
-                onClick={() => setIsModalOpen(true)}
-                className="interactive px-6 py-3 border border-[#F8F3EF]/40 hover:border-[#D03412] hover:bg-[#D03412] text-[#F8F3EF] font-mono text-xs tracking-widest uppercase rounded-xs transition-all flex items-center gap-2 group font-bold shadow-lg"
-              >
-                <span>START A PROJECT</span>
-                <ArrowUpRight size={14} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform text-[#D03412] group-hover:text-white" />
-              </button>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <button
+                  onClick={() => setIsModalOpen(true)}
+                  className="interactive px-6 py-3.5 bg-[#D03412] hover:bg-[#b02a0e] text-[#F8F3EF] font-mono text-xs tracking-widest uppercase rounded-sm transition-all flex items-center justify-center gap-2 group font-bold shadow-xl shadow-[#D03412]/25 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F8F3EF]"
+                >
+                  <span>BOOK A STRATEGY CALL</span>
+                  <ArrowUpRight
+                    size={14}
+                    className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
+                  />
+                </button>
+
+                <a
+                  href="#portfolio"
+                  className="interactive px-6 py-3.5 border border-[#F8F3EF]/45 hover:border-[#F8F3EF] hover:bg-[#F8F3EF]/10 text-[#F8F3EF] font-mono text-xs tracking-widest uppercase rounded-sm transition-all flex items-center justify-center gap-2 group font-bold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D03412]"
+                >
+                  <span>SEE OUR WORK</span>
+                  <ArrowUpRight
+                    size={14}
+                    className="text-[#D03412] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
+                  />
+                </a>
+              </div>
             </div>
 
-            {/* Right Divider & Only 11 Clients Badge */}
-            <div className="sm:border-l border-[#D03412]/30 sm:pl-6 space-y-1">
-              <span className="text-xs font-mono tracking-wider text-[#D03412] font-bold block uppercase">
-                ONLY 11 CLIENTS
-              </span>
-              <span className="text-xs font-mono text-[#F8F3EF]/70 block">
-                At a time. Always.
-              </span>
+            {/* Availability / scarcity */}
+            <div className="sm:border-l border-[#D03412]/30 sm:pl-6">
+              <CapacityStatus />
             </div>
 
           </div>
@@ -115,6 +129,7 @@ export default function HeroSection() {
               src="/assets/hero-paper-sculpture.jpg"
               alt="3D Wrinkled Paper Sculpture"
               fill
+              sizes="(min-width: 1024px) 28rem, 100vw"
               className="object-cover group-hover:scale-105 transition-transform duration-700"
             />
             

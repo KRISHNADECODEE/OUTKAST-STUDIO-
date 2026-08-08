@@ -53,7 +53,7 @@ export default function ProcessSection() {
   ];
 
   return (
-    <section className="relative py-28 px-6 md:px-12 bg-[#7C1117] overflow-hidden paper-grain">
+    <section id="process" className="relative py-28 px-6 md:px-12 bg-[#7C1117] overflow-hidden paper-grain">
       
       {/* Background texture */}
       <div className="absolute inset-0 opacity-30 pointer-events-none mix-blend-overlay">
@@ -61,6 +61,7 @@ export default function ProcessSection() {
           src="/assets/paper-bg.jpg"
           alt="Paper texture background"
           fill
+          sizes="100vw"
           className="object-cover"
         />
       </div>

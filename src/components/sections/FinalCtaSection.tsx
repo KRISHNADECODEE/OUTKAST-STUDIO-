@@ -5,7 +5,7 @@ import Image from "next/image";
 import ProjectModal from "../ProjectModal";
 import { HanddrawnSmiley, BrushStroke } from "../ui/BrandAssets";
 import { BackgroundPattern, NoiseOverlay, SectionCounter } from "../ui/PaperAssets";
-import { ArrowUpRight } from "lucide-react";
+import BookingEmbed from "../ui/BookingEmbed";
 
 export default function FinalCtaSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -19,6 +19,7 @@ export default function FinalCtaSection() {
           src="/assets/paper-bg.jpg"
           alt="Wrinkled paper texture"
           fill
+          sizes="100vw"
           className="object-cover"
         />
       </div>
@@ -43,27 +44,16 @@ export default function FinalCtaSection() {
           <BrushStroke variant="sweep" className="w-80 h-8 text-[#D03412]/70" />
         </div>
 
-        {/* Right CTA Box */}
-        <div className="lg:col-span-4 bg-[#8D161D] border border-[#D03412]/40 p-8 rounded-sm shadow-2xl space-y-6 relative paper-grain">
-          
-          <div className="flex justify-between items-start">
+        {/* Right: scheduler */}
+        <div className="lg:col-span-4 relative space-y-4">
+          <div className="flex justify-between items-start gap-4">
             <p className="text-base font-mono text-[#F8F3EF]/90 leading-relaxed">
               Your brand deserves more than ordinary. Let's create something unforgettable.
             </p>
             <HanddrawnSmiley className="w-10 h-10 text-[#D03412] shrink-0" />
           </div>
 
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="interactive w-full py-4 bg-[#D03412] hover:bg-[#b02a0e] text-white font-mono text-sm tracking-widest uppercase font-bold rounded-sm shadow-xl transition-all flex items-center justify-center gap-3 group"
-          >
-            <span>START A PROJECT</span>
-            <ArrowUpRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-          </button>
-
-          <p className="text-[10px] font-mono text-center text-[#F8F3EF]/60 uppercase tracking-widest">
-            RESPONDS WITHIN 24 HOURS • WORLDWIDE PARTNERSHIPS
-          </p>
+          <BookingEmbed onFallbackClick={() => setIsModalOpen(true)} />
         </div>
 
       </div>

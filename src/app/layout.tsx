@@ -4,6 +4,7 @@ import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import LoadingScreen from "@/components/LoadingScreen";
 import IdleAnimations from "@/components/IdleAnimations";
+import JsonLd from "@/components/JsonLd";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -78,6 +79,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${syne.variable} ${plusJakarta.variable} ${permanentMarker.variable} ${caveat.variable}`}>
+      <head>
+        <JsonLd />
+      </head>
       <body className="bg-[#7C1117] text-[#F8F3EF] antialiased selection:bg-[#D03412] selection:text-white relative">
         <LoadingScreen />
         <IdleAnimations />

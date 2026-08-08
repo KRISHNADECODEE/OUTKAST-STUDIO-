@@ -23,6 +23,7 @@ export default function ResultsSection() {
           src="/assets/paper-bg.jpg"
           alt="Paper texture background"
           fill
+          sizes="100vw"
           className="object-cover"
         />
       </div>

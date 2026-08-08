@@ -10,7 +10,7 @@ import ResultsSection from "@/components/sections/ResultsSection";
 import AiUgcSection from "@/components/sections/AiUgcSection";
 import ProcessSection from "@/components/sections/ProcessSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
-import BrandsMarquee from "@/components/sections/BrandsMarquee";
+import ResultsGrid from "@/components/sections/ResultsGrid";
 import FaqSection from "@/components/sections/FaqSection";
 import FinalCtaSection from "@/components/sections/FinalCtaSection";
 import Footer from "@/components/sections/Footer";
@@ -63,7 +63,7 @@ export default function Home() {
       <TestimonialsSection />
       <SectionSeam from={SURFACE} to={DEEP} flip />
 
-      <BrandsMarquee />
+      <ResultsGrid />
       <SectionSeam from={DEEP} to={SURFACE} />
 
       <FaqSection />

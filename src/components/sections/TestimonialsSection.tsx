@@ -54,7 +54,11 @@ export default function TestimonialsSection() {
   const current = testimonials[currentIndex];
 
   return (
-    <section className="relative py-28 px-6 md:px-12 bg-[#8D161D] overflow-hidden border-t border-b border-[#D03412]/30 paper-grain">
+    <section
+      id="testimonials"
+      aria-label="Client testimonials"
+      className="relative py-28 px-6 md:px-12 bg-[#8D161D] overflow-hidden border-t border-b border-[#D03412]/30 paper-grain"
+    >
       
       {/* Texture background */}
       <div className="absolute inset-0 opacity-30 pointer-events-none mix-blend-multiply">
@@ -62,6 +66,7 @@ export default function TestimonialsSection() {
           src="/assets/paper-bg.jpg"
           alt="Paper background"
           fill
+          sizes="100vw"
           className="object-cover"
         />
       </div>
@@ -101,6 +106,7 @@ export default function TestimonialsSection() {
                 src={current.img}
                 alt={current.author}
                 fill
+                sizes="(min-width: 1024px) 20rem, 100vw"
                 className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#7C1117] via-transparent to-transparent opacity-80" />

@@ -19,13 +19,22 @@ const CHAPTERS = [
   { id: "approach", label: "Approach" },
   { id: "services", label: "Services" },
   { id: "portfolio", label: "Work" },
+  { id: "why", label: "Why Outkast" },
+  { id: "results", label: "Results" },
+  { id: "ai-ugc", label: "AI UGC Ads" },
+  { id: "process", label: "Process" },
+  { id: "testimonials", label: "Testimonials" },
+  { id: "results-grid", label: "Client Results" },
+  { id: "faq", label: "FAQ" },
   { id: "contact", label: "Contact" },
 ];
 
-const DOT = 12; // dot diameter
-const STEP = 32; // centre-to-centre spacing between dots
-const RING = 30; // travelling ring diameter
-const HIT = 26; // click target around each dot
+/* Sized so the whole rail still clears a short laptop viewport: 13 chapters at
+   this step is ~324px of track, ~440px including the counter and label. */
+const DOT = 9; // dot diameter
+const STEP = 27; // centre-to-centre spacing between dots
+const RING = 23; // travelling ring diameter
+const HIT = 24; // click target around each dot
 const TRACK = (CHAPTERS.length - 1) * STEP + DOT;
 const PROBE = 0.42; // a section is "current" once its top crosses this much of the viewport
 
