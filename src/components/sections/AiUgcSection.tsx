@@ -3,10 +3,10 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { MadeToConvertBadge } from "../ui/BrandAssets";
-import { Play, ChevronRight, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import VideoModal from "../VideoModal";
 import CinematicVideo from "../ui/CinematicVideo";
-import InlineLoopVideo from "../ui/InlineLoopVideo";
+import UgcCarousel, { type UgcReel } from "../ui/UgcCarousel";
 
 export default function AiUgcSection() {
   const [selectedVideo, setSelectedVideo] = useState<{
@@ -19,14 +19,7 @@ export default function AiUgcSection() {
   } | null>(null);
 
   /* `img` doubles as the poster frame for entries that have a `video`. */
-  const phoneMockups: {
-    category: string;
-    views: string;
-    ctr: string;
-    img: string;
-    title: string;
-    video?: string;
-  }[] = [
+  const phoneMockups: UgcReel[] = [
     {
       category: "SKINCARE BRAND",
       views: "3.2M",
@@ -141,85 +134,27 @@ export default function AiUgcSection() {
           />
         </article>
 
-        {/* 5 Phone Deck Deck with Floating Made To Convert Badge (Exact Mockup 2 Match) */}
+        {/* Reel deck — three on screen, the rest a tap away. */}
         <div className="relative pt-6">
-          
+
           {/* Floating Made To Convert Badge */}
-          <div className="absolute -top-4 right-6 z-30 hidden sm:block">
+          <div className="absolute -top-4 right-6 z-40 hidden sm:block">
             <MadeToConvertBadge />
           </div>
 
-          {/* 6 cards divide evenly at every breakpoint — no orphan row. */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 md:gap-6">
-            {phoneMockups.map((phone, i) => (
-              <button
-                key={i}
-                type="button"
-                aria-label={`Preview ${phone.title} — ${phone.category}`}
-                onClick={() =>
-                  setSelectedVideo({
-                    title: phone.title,
-                    category: phone.category,
-                    views: phone.views,
-                    ctr: phone.ctr,
-                    thumbnail: phone.img,
-                    video: phone.video,
-                  })
-                }
-                className="interactive relative w-full text-left aspect-[9/18] bg-[#111111] rounded-[22px] border-2 border-[#D03412]/40 p-2 overflow-hidden shadow-2xl group hover:border-[#D03412] focus-visible:border-[#D03412] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D03412] transition-all duration-300 cursor-pointer hover:-translate-y-2"
-              >
-                {/* Top Notch */}
-                <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-14 h-2.5 bg-[#111111] rounded-full z-20 border border-white/10" />
-
-                {/* Inner Screen */}
-                <div className="relative w-full h-full rounded-[16px] overflow-hidden bg-[#7C1117]">
-                  {phone.video ? (
-                    <InlineLoopVideo
-                      src={phone.video}
-                      poster={phone.img}
-                      alt={phone.category}
-                      sizes="(min-width: 1024px) 16vw, (min-width: 640px) 33vw, 50vw"
-                      className="opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
-                    />
-                  ) : (
-                    <Image
-                      src={phone.img}
-                      alt={phone.category}
-                      fill
-                      sizes="(min-width: 1024px) 16vw, (min-width: 640px) 33vw, 50vw"
-                      className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-90 group-hover:opacity-100"
-                    />
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-80" />
-
-                  {/* Play Icon */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-10 h-10 rounded-full bg-[#D03412]/80 group-hover:bg-[#D03412] text-white flex items-center justify-center shadow-lg transition-transform group-hover:scale-110">
-                      <Play size={16} className="fill-white ml-0.5" />
-                    </div>
-                  </div>
-
-                  {/* Bottom Metrics Bar */}
-                  <div className="absolute bottom-2 left-2 right-2 space-y-1 z-10 bg-[#111111]/85 backdrop-blur-xs p-2 rounded-md border border-white/10">
-                    <span className="text-[8px] font-mono tracking-widest text-[#D03412] uppercase font-bold block truncate">
-                      {phone.category}
-                    </span>
-                    <div className="flex justify-between text-[9px] font-mono text-[#F8F3EF]/90 font-bold pt-0.5 border-t border-white/10">
-                      <span>{phone.views} VIEWS</span>
-                      <span className="text-[#D03412]">{phone.ctr} CTR</span>
-                    </div>
-                  </div>
-                </div>
-              </button>
-            ))}
-          </div>
-
-          {/* Right Floating Arrow */}
-          <div className="absolute top-1/2 -right-4 -translate-y-1/2 hidden xl:block">
-            <button className="w-10 h-10 rounded-full border border-[#D03412]/40 bg-[#7C1117] text-[#F8F3EF] flex items-center justify-center hover:bg-[#D03412] transition-colors">
-              <ChevronRight size={20} />
-            </button>
-          </div>
+          <UgcCarousel
+            reels={phoneMockups}
+            onExpand={(reel) =>
+              setSelectedVideo({
+                title: reel.title,
+                category: reel.category,
+                views: reel.views,
+                ctr: reel.ctr,
+                thumbnail: reel.img,
+                video: reel.video,
+              })
+            }
+          />
 
         </div>
 
