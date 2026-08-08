@@ -37,8 +37,8 @@ export default function TestimonialsSection() {
       quote:
         "OUTKAST built an aggressive, raw, high-fashion web experience that set us apart from every streetwear competitor. They don't follow trends—they define them.",
       author: "Devansh Mehta",
-      role: "Creative Lead, XTRM Streetwear",
-      project: "XTRM Streetwear",
+      role: "Creative Lead, XTRM",
+      project: "XTRM",
       img: "/assets/greek-statue.jpg",
     },
   ];

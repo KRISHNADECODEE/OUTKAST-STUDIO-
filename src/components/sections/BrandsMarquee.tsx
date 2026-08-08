@@ -8,7 +8,7 @@ export default function BrandsMarquee() {
     "THE MASKED ASTROLOGER",
     "CRACK UPSC EXAMS",
     "SU TOUR & TRAVEL",
-    "XTRM STREETWEAR",
+    "XTRM",
     "OM LADIES TAILOR",
     "MONKMODE®",
     "WILDLENS",
