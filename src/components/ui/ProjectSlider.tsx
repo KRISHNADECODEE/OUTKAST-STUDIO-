@@ -80,7 +80,8 @@ export const ProjectSlider = ({ projects, className }: ProjectSliderProps) => {
     <div className={cn("relative w-full", className)}>
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-stretch">
         {/* ---- Left rail: counter, label, thumbnails ---- */}
-        <div className="md:col-span-3 flex flex-col justify-between order-2 md:order-1">
+        {/* On phones this drops below the copy: image, then text, then thumbs */}
+        <div className="md:col-span-3 flex flex-col justify-between order-3 md:order-1">
           <div className="flex items-center md:items-start justify-between md:flex-col md:gap-6">
             <span className="text-xs font-mono tracking-widest tabular-nums text-[#F8F3EF]/60">
               <span className="text-[#D03412] font-bold">
@@ -119,7 +120,22 @@ export const ProjectSlider = ({ projects, className }: ProjectSliderProps) => {
 
         {/* ---- Centre: the sliding frame ---- */}
         <div className="md:col-span-4 order-1 md:order-2">
-          <div className="relative w-full aspect-[9/13] md:aspect-auto md:h-[480px] overflow-hidden rounded-sm border border-[#D03412]/30 bg-[#111111]">
+          <motion.div
+            /* Swipe to change slides on touch. dragDirectionLock plus
+               touch-pan-y means a vertical drag still scrolls the page
+               natively rather than being swallowed by the slider. */
+            drag="x"
+            dragDirectionLock
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.12}
+            dragMomentum={false}
+            onDragEnd={(_, info) => {
+              const threshold = 60;
+              if (info.offset.x < -threshold) handleNext();
+              else if (info.offset.x > threshold) handlePrev();
+            }}
+            className="relative w-full aspect-[9/13] md:aspect-auto md:h-[480px] overflow-hidden rounded-sm border border-[#D03412]/30 bg-[#111111] touch-pan-y select-none cursor-grab active:cursor-grabbing"
+          >
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
                 key={currentIndex}
@@ -146,11 +162,16 @@ export const ProjectSlider = ({ projects, className }: ProjectSliderProps) => {
             <span className="absolute top-4 right-4 z-10 text-[10px] font-mono font-bold tracking-widest text-[#D03412]">
               {String(currentIndex + 1).padStart(2, "0")}
             </span>
-          </div>
+
+            {/* Swipe affordance, touch only */}
+            <span className="md:hidden absolute bottom-3 left-1/2 -translate-x-1/2 z-10 text-[9px] font-mono tracking-[0.2em] uppercase text-[#F8F3EF]/50">
+              swipe
+            </span>
+          </motion.div>
         </div>
 
         {/* ---- Right: copy and controls ---- */}
-        <div className="md:col-span-5 flex flex-col justify-between order-3">
+        <div className="md:col-span-5 flex flex-col justify-between order-2 md:order-3">
           <div className="relative overflow-hidden md:pt-10 min-h-[210px]">
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
