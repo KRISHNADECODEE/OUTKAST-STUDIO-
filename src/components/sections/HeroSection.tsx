@@ -45,7 +45,7 @@ export default function HeroSection() {
           {/* Wordmark — decorative, the brand name is already the site title
               and the nav logo, so it is not the document heading. */}
           <div className="relative select-none" aria-hidden="true">
-            <p className="text-7xl sm:text-9xl lg:text-[160px] xl:text-[180px] font-editorial font-extrabold leading-[0.82] tracking-tighter text-[#F8F3EF]/90 uppercase opacity-95">
+            <p className="wordmark-fit font-editorial font-extrabold leading-[0.82] tracking-tighter text-[#F8F3EF]/90 uppercase opacity-95 whitespace-nowrap">
               OUTKAST
             </p>
           </div>

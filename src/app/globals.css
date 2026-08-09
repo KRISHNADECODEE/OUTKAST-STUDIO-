@@ -65,6 +65,29 @@
   font-family: var(--font-handwritten), cursive;
 }
 
+/* OUTKAST wordmark.
+   One fixed word, so its size comes from the width it has to fill rather
+   than from a type scale. Measured at 8.01 units of width per 1 unit of
+   font-size (Syne 800 at the -0.03em tracking .font-editorial sets), so
+   dividing the container width by 8.15 lands the whole word just inside
+   it — including the final T, which a fixed 72px clipped on every phone.
+   The 1280px ceiling is max-w-7xl, so it stops growing with the page. */
+.wordmark-fit {
+  font-size: calc(min(100vw - 48px, 1280px) / 8.15);
+}
+
+@media (min-width: 640px) {
+  .wordmark-fit {
+    font-size: calc(min(100vw - 80px, 1280px) / 8.15);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wordmark-fit {
+    font-size: calc(min(100vw - 128px, 1280px) / 8.15);
+  }
+}
+
 /* Writing mode vertical utility */
 .writing-mode-vertical {
   writing-mode: vertical-rl;
