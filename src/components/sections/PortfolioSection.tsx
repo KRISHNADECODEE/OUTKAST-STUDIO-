@@ -40,22 +40,6 @@ export default function PortfolioSection() {
       img: "/assets/om-ladies-tailor.jpg",
       headline: "Elegance Craft.",
     },
-    {
-      title: "LUNE LUXURY",
-      tagline: "Timeless designs. Unmatched experiences.",
-      category: "PORTFOLIO WEBSITE",
-      url: "#",
-      img: "/assets/paper-bg.jpg",
-      headline: "Luxury Redefined.",
-    },
-    {
-      title: "WILDLENS",
-      tagline: "Explore. Capture. Inspire.",
-      category: "MEDIA & FILM",
-      url: "#",
-      img: "/assets/greek-statue.jpg",
-      headline: "Capture Beauty.",
-    },
   ];
 
   const slides: SlideProject[] = projects.map((p, i) => ({

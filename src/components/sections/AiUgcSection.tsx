@@ -12,8 +12,6 @@ export default function AiUgcSection() {
   const [selectedVideo, setSelectedVideo] = useState<{
     title: string;
     category: string;
-    views: string;
-    ctr: string;
     thumbnail: string;
     video?: string;
   } | null>(null);
@@ -22,44 +20,40 @@ export default function AiUgcSection() {
   const phoneMockups: UgcReel[] = [
     {
       category: "SKINCARE BRAND",
-      views: "3.2M",
-      ctr: "8.7%",
       img: "/assets/ugc-skincare-poster.jpg",
       video: "/videos/ugc-skincare.mp4",
       title: "Glow Serum AI UGC Hook",
     },
     {
+      category: "COSMETIC PRODUCT",
+      img: "/assets/ugc-cosmetic-poster.jpg",
+      video: "/videos/ugc-cosmetic.mp4",
+      title: "Enigma Fragrance Film",
+    },
+    {
       category: "FITNESS BRAND",
-      views: "2.6M",
-      ctr: "7.1%",
       img: "/assets/ugc-fitness.jpg",
       title: "Isolated Whey Protein Ad",
     },
     {
       category: "HOME DECOR BRAND",
-      views: "1.8M",
-      ctr: "6.3%",
-      img: "/assets/paper-bg.jpg",
-      title: "Minimalist Studio Ambient",
+      img: "/assets/ugc-decor-poster.jpg",
+      video: "/videos/ugc-decor.mp4",
+      title: "Ghost Lamp Ambient Hook",
     },
     {
       category: "FASHION BRAND",
-      views: "2.9M",
-      ctr: "9.2%",
-      img: "/assets/ugc-fashion.jpg",
-      title: "Streetwear Drops Hook",
+      img: "/assets/ugc-fashion-poster.jpg",
+      video: "/videos/ugc-fashion.mp4",
+      title: "Panvero Folk Apparel Hook",
     },
     {
       category: "TRAVEL BRAND",
-      views: "4.1M",
-      ctr: "10.4%",
       img: "/assets/greek-statue.jpg",
       title: "Coastal Escape Experience",
     },
     {
       category: "PRODUCT REVIEW",
-      views: "2.4M",
-      ctr: "9.6%",
       img: "/assets/ugc-jewelry-poster.jpg",
       video: "/videos/ugc-jewelry.mp4",
       title: "Ring Showcase Review Hook",
@@ -114,22 +108,21 @@ export default function AiUgcSection() {
           </div>
         </div>
 
-        {/* Split-screen comparison reel */}
+        {/* Featured showreel */}
         <article className="relative">
           <div className="flex items-baseline justify-between gap-4 mb-4">
             <h3 className="text-sm font-mono font-bold uppercase tracking-[0.2em] text-[#D03412]">
-              Standard Ad vs. AI UGC Ad
+              AI 3D Product Film
             </h3>
             <span className="text-[10px] font-mono uppercase tracking-widest text-[#F8F3EF]/50">
-              Same product · same spend
+              No studio · no shoot day
             </span>
           </div>
 
           <CinematicVideo
             src="/videos/ai-ugc-comparison.mp4"
-            webmSrc="/videos/ai-ugc-comparison.webm"
-            poster="/assets/ugc-fashion.jpg"
-            label="Standard Ad vs. AI UGC Ad"
+            poster="/assets/ai-ugc-comparison-poster.jpg"
+            label="AI 3D Product Film"
             ratio="16/9"
           />
         </article>
@@ -148,8 +141,6 @@ export default function AiUgcSection() {
               setSelectedVideo({
                 title: reel.title,
                 category: reel.category,
-                views: reel.views,
-                ctr: reel.ctr,
                 thumbnail: reel.img,
                 video: reel.video,
               })

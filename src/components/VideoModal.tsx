@@ -11,8 +11,6 @@ interface VideoModalProps {
   videoData: {
     title: string;
     category: string;
-    views: string;
-    ctr: string;
     thumbnail: string;
     /** Real clip. Entries without one still render the placeholder card. */
     video?: string;
@@ -113,17 +111,13 @@ export default function VideoModal({ isOpen, onClose, videoData }: VideoModalPro
 
             {/* Bottom Details — lifted clear of the native control bar. */}
             <div
-              className={`bg-[#111111]/80 backdrop-blur-sm p-4 rounded-xl border border-[#D03412]/30 space-y-2 z-10 ${
+              className={`bg-[#111111]/80 backdrop-blur-sm p-4 rounded-xl border border-[#D03412]/30 z-10 ${
                 shown.video ? "mb-12" : ""
               }`}
             >
-              <div className="flex justify-between text-xs font-mono">
+              <div className="flex items-center justify-between gap-3 text-xs font-mono">
                 <span className="text-white/70">{shown.title}</span>
                 <span className="text-[#D03412] font-bold">HIGH CONVERTING</span>
-              </div>
-              <div className="flex items-center justify-between text-xs font-mono font-bold pt-1 border-t border-white/10">
-                <span className="text-white">{shown.views} VIEWS</span>
-                <span className="text-[#D03412]">{shown.ctr} CTR</span>
               </div>
             </div>
           </motion.div>

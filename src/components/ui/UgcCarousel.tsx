@@ -20,8 +20,6 @@ import { cn } from "@/lib/utils";
 
 export type UgcReel = {
   category: string;
-  views: string;
-  ctr: string;
   /** Doubles as the poster frame for reels that have a clip. */
   img: string;
   video?: string;
@@ -227,15 +225,11 @@ export default function UgcCarousel({ reels, onExpand, className }: UgcCarouselP
                     </>
                   )}
 
-                  {/* Metrics bar */}
-                  <div className="absolute bottom-2 left-2 right-2 z-10 space-y-1 rounded-md border border-white/10 bg-[#111111]/85 p-2 backdrop-blur-xs">
+                  {/* Category tag */}
+                  <div className="absolute bottom-2 left-2 right-2 z-10 rounded-md border border-white/10 bg-[#111111]/85 px-2 py-1.5 backdrop-blur-xs">
                     <span className="block truncate text-[9px] font-mono font-bold uppercase tracking-widest text-[#D03412]">
                       {reel.category}
                     </span>
-                    <div className="flex justify-between border-t border-white/10 pt-0.5 text-[10px] font-mono font-bold text-[#F8F3EF]/90">
-                      <span>{reel.views} VIEWS</span>
-                      <span className="text-[#D03412]">{reel.ctr} CTR</span>
-                    </div>
                   </div>
                 </div>
               </motion.div>
