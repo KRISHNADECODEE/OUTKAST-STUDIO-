@@ -71,14 +71,14 @@ export default function HeroSection() {
             
             {/* Left Paragraph & primary conversion actions */}
             <div className="space-y-5">
-              <p className="text-xs sm:text-sm font-mono text-[#F8F3EF]/80 leading-relaxed max-w-xs">
+              <p className="text-sm font-mono text-[#F8F3EF]/80 leading-relaxed max-w-xs">
                 We design digital experiences that are bold, original and unforgettable.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3">
                 <button
                   onClick={() => setIsModalOpen(true)}
-                  className="interactive px-6 py-3.5 bg-[#D03412] hover:bg-[#b02a0e] text-[#F8F3EF] font-mono text-xs tracking-widest uppercase rounded-sm transition-all flex items-center justify-center gap-2 group font-bold shadow-xl shadow-[#D03412]/25 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F8F3EF]"
+                  className="interactive px-6 py-4 sm:py-3.5 bg-[#D03412] hover:bg-[#b02a0e] text-[#F8F3EF] font-mono text-[13px] sm:text-xs tracking-widest uppercase rounded-sm transition-all flex items-center justify-center gap-2 group font-bold shadow-xl shadow-[#D03412]/25 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F8F3EF]"
                 >
                   <span>BOOK A STRATEGY CALL</span>
                   <ArrowUpRight
@@ -89,7 +89,7 @@ export default function HeroSection() {
 
                 <a
                   href="#portfolio"
-                  className="interactive px-6 py-3.5 border border-[#F8F3EF]/45 hover:border-[#F8F3EF] hover:bg-[#F8F3EF]/10 text-[#F8F3EF] font-mono text-xs tracking-widest uppercase rounded-sm transition-all flex items-center justify-center gap-2 group font-bold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D03412]"
+                  className="interactive px-6 py-4 sm:py-3.5 border border-[#F8F3EF]/45 hover:border-[#F8F3EF] hover:bg-[#F8F3EF]/10 text-[#F8F3EF] font-mono text-[13px] sm:text-xs tracking-widest uppercase rounded-sm transition-all flex items-center justify-center gap-2 group font-bold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D03412]"
                 >
                   <span>SEE OUR WORK</span>
                   <ArrowUpRight

@@ -68,7 +68,13 @@ export const metadata: Metadata = {
   manifest: "/manifest.webmanifest",
 };
 
+/* A custom viewport export replaces Next's default rather than extending it,
+   so width/initialScale have to be restated here. Without them no viewport
+   meta is emitted at all and phones render the page at their ~980px fallback
+   width, then scale it down — the desktop layout, shrunk to nothing. */
 export const viewport = {
+  width: "device-width",
+  initialScale: 1,
   themeColor: "#7C1117",
 };
 

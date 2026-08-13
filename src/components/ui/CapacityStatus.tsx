@@ -28,12 +28,12 @@ export default function CapacityStatus({ className = "" }: { className?: string 
           <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#34D399] shadow-[0_0_8px_rgba(52,211,153,0.9)]" />
         </span>
 
-        <span className="text-[11px] font-mono tracking-widest uppercase font-bold text-[#34D399]">
+        <span className="text-xs sm:text-[11px] font-mono tracking-widest uppercase font-bold text-[#34D399]">
           {remaining} {remaining === 1 ? "spot" : "spots"} open
         </span>
       </div>
 
-      <p className="text-xs font-mono leading-relaxed text-[#F8F3EF]/75 max-w-[19rem]">
+      <p className="text-[13px] sm:text-xs font-mono leading-relaxed text-[#F8F3EF]/75 max-w-[19rem]">
         We strictly work with {TOTAL_SLOTS} clients at a time.{" "}
         <strong className="text-[#F8F3EF] font-bold">
           Currently {FILLED_SLOTS}/{TOTAL_SLOTS} spots filled.
