@@ -46,6 +46,9 @@ export const metadata: Metadata = {
     ],
     apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
   },
+  verification: {
+    google: "FOuUKFwrdb0KIo-LUtIINkVlE3tssKswWiTSDRUuvCk",
+  },
   manifest: "/manifest.webmanifest",
 };
 
