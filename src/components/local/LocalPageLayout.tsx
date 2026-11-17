@@ -3,11 +3,13 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Plus, Minus, MessageCircle, ArrowUpRight, ChevronRight } from "lucide-react";
+import { Plus, Minus, MessageCircle, ArrowUpRight, ChevronRight, FileText, CheckCircle2 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/sections/Footer";
+import ProjectModal from "@/components/ProjectModal";
+import FloatingWhatsApp from "@/components/ui/FloatingWhatsApp";
 import { BackgroundPattern, NoiseOverlay, TornEdge } from "@/components/ui/PaperAssets";
-import { BUSINESS_CONFIG, getWhatsAppUrl } from "@/lib/business-config";
+import { BUSINESS_CONFIG, getWhatsAppUrl, getEmailHref } from "@/lib/business-config";
 
 /* ─── Types ────────────────────────────────────────────────────────────────── */
 
@@ -184,7 +186,9 @@ export default function LocalPageLayout({
   internalLinks = [],
   whatsappMessage,
 }: LocalPageLayoutProps) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { url: whatsappUrl, isConfigured: isWAConfigured } = getWhatsAppUrl(whatsappMessage);
+  const emailInfo = getEmailHref();
   const projects = BUSINESS_CONFIG.projects;
 
   return (
@@ -227,13 +231,14 @@ export default function LocalPageLayout({
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4 pt-2">
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[#D03412] hover:bg-[#b02a0e] text-[#F8F3EF] font-mono text-xs uppercase tracking-widest font-bold rounded-sm transition-colors shadow-xl shadow-[#D03412]/30"
+              <button
+                type="button"
+                onClick={() => setIsModalOpen(true)}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#D03412] hover:bg-[#b02a0e] text-[#F8F3EF] font-mono text-xs uppercase tracking-widest font-bold rounded-sm transition-colors shadow-xl shadow-[#D03412]/30 cursor-pointer"
               >
                 <span>START YOUR PROJECT</span>
                 <ArrowUpRight size={14} />
-              </a>
+              </button>
               {isWAConfigured ? (
                 <a
                   href={whatsappUrl}
@@ -245,13 +250,14 @@ export default function LocalPageLayout({
                   <span>WHATSAPP US</span>
                 </a>
               ) : (
-                <a
-                  href="#contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 border border-[#D03412]/60 hover:border-[#D03412] text-[#F8F3EF] font-mono text-xs uppercase tracking-widest font-bold rounded-sm transition-colors"
+                <button
+                  type="button"
+                  onClick={() => setIsModalOpen(true)}
+                  className="inline-flex items-center gap-2 px-6 py-3 border border-[#D03412]/60 hover:border-[#D03412] text-[#F8F3EF] font-mono text-xs uppercase tracking-widest font-bold rounded-sm transition-colors cursor-pointer"
                 >
                   <MessageCircle size={14} />
-                  <span>GET IN TOUCH</span>
-                </a>
+                  <span>SUBMIT PROJECT BRIEF</span>
+                </button>
               )}
             </div>
 
@@ -341,39 +347,56 @@ export default function LocalPageLayout({
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {projects.map((project) => (
-              <a
+              <div
                 key={project.id}
-                href={project.liveUrl ?? "#portfolio"}
-                target={project.liveUrl ? "_blank" : undefined}
-                rel={project.liveUrl ? "noopener noreferrer" : undefined}
-                className="group block bg-[#8D161D] border border-[#D03412]/30 rounded-sm overflow-hidden hover:border-[#D03412]/80 transition-all shadow-lg hover:shadow-[#D03412]/20"
+                className="group flex flex-col justify-between bg-[#8D161D] border border-[#D03412]/30 rounded-sm overflow-hidden hover:border-[#D03412]/80 transition-all shadow-lg hover:shadow-[#D03412]/20"
               >
-                <div className="relative aspect-[4/3] overflow-hidden bg-[#5C0F14]">
-                  <Image
-                    src={project.imageSrc}
-                    alt={project.name}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-4 space-y-2">
-                  <span className="text-[10px] font-mono text-[#D03412] uppercase tracking-widest font-bold">
-                    {project.industry}
-                  </span>
-                  <h3 className="text-base font-editorial uppercase text-[#F8F3EF]">
-                    {project.name}
-                  </h3>
-                  <p className="text-xs font-mono text-[#F8F3EF]/65 leading-relaxed line-clamp-2">
-                    {project.tagline}
-                  </p>
-                  {project.liveUrl && (
-                    <span className="inline-flex items-center gap-1 text-[10px] font-mono text-[#D03412] group-hover:underline transition-all">
-                      VIEW LIVE <ArrowUpRight size={10} />
+                <div>
+                  <Link href={`/work/${project.id}`} className="block relative aspect-[4/3] overflow-hidden bg-[#5C0F14]">
+                    <Image
+                      src={project.imageSrc}
+                      alt={project.name}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </Link>
+                  <div className="p-4 space-y-2">
+                    <span className="text-[10px] font-mono text-[#D03412] uppercase tracking-widest font-bold">
+                      {project.industry}
                     </span>
+                    <h3 className="text-base font-editorial uppercase text-[#F8F3EF]">
+                      <Link href={`/work/${project.id}`} className="hover:text-[#D03412] transition-colors">
+                        {project.name}
+                      </Link>
+                    </h3>
+                    <p className="text-xs font-mono text-[#F8F3EF]/65 leading-relaxed line-clamp-2">
+                      {project.tagline}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-4 pt-0 flex items-center justify-between text-[11px] font-mono border-t border-[#D03412]/20 mt-2">
+                  <Link
+                    href={`/work/${project.id}`}
+                    className="inline-flex items-center gap-1 text-[#F8F3EF]/80 hover:text-[#D03412] transition-colors"
+                  >
+                    <FileText size={12} />
+                    <span>CASE STUDY</span>
+                  </Link>
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-[#D03412] hover:underline transition-all"
+                    >
+                      <span>LIVE SITE</span>
+                      <ArrowUpRight size={11} />
+                    </a>
                   )}
                 </div>
-              </a>
+              </div>
             ))}
           </div>
         </div>
@@ -406,13 +429,14 @@ export default function LocalPageLayout({
             </p>
 
             <div className="flex flex-wrap gap-4 pt-2">
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-[#D03412] hover:bg-[#b02a0e] text-[#F8F3EF] font-mono text-xs uppercase tracking-widest font-bold rounded-sm transition-colors shadow-xl shadow-[#D03412]/30"
+              <button
+                type="button"
+                onClick={() => setIsModalOpen(true)}
+                className="inline-flex items-center gap-2 px-8 py-4 bg-[#D03412] hover:bg-[#b02a0e] text-[#F8F3EF] font-mono text-xs uppercase tracking-widest font-bold rounded-sm transition-colors shadow-xl shadow-[#D03412]/30 cursor-pointer"
               >
                 <span>START YOUR PROJECT</span>
                 <ArrowUpRight size={14} />
-              </a>
+              </button>
               {isWAConfigured ? (
                 <a
                   href={whatsappUrl}
@@ -425,22 +449,37 @@ export default function LocalPageLayout({
                 </a>
               ) : (
                 <a
-                  href="mailto:hello@outkast.studio"
+                  href={emailInfo.href}
                   className="inline-flex items-center gap-2 px-8 py-4 border border-[#D03412]/60 hover:border-[#D03412] text-[#F8F3EF] font-mono text-xs uppercase tracking-widest font-bold rounded-sm transition-colors"
                 >
-                  <span>EMAIL THE STUDIO</span>
+                  <span>{emailInfo.display}</span>
                 </a>
               )}
             </div>
 
-            <div className="pt-4 border-t border-[#D03412]/20">
-              <p className="text-xs font-mono text-[#F8F3EF]/50">
-                Based in India · Senior review on every brief · 24-hour response commitment
-              </p>
+            <div className="pt-4 border-t border-[#D03412]/20 flex flex-wrap items-center gap-6 text-xs font-mono text-[#F8F3EF]/60">
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 size={13} className="text-[#D03412]" />
+                Based in India
+              </span>
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 size={13} className="text-[#D03412]" />
+                Senior creative review
+              </span>
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 size={13} className="text-[#D03412]" />
+                24-hour response
+              </span>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Interactive Project Brief Modal */}
+      <ProjectModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+
+      {/* Floating WhatsApp on Location Pages */}
+      <FloatingWhatsApp />
 
       <Footer />
     </div>

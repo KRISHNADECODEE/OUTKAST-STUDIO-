@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { OutkastLogo, CircularStamp } from "../ui/BrandAssets";
 import { Instagram, Mail, Globe, ArrowUpRight, MessageCircle } from "lucide-react";
 import { BUSINESS_CONFIG, getEmailHref, getSocialUrl, getWhatsAppUrl } from "@/lib/business-config";
@@ -66,27 +67,27 @@ export default function Footer() {
           {/* Col 2: Navigation Links */}
           <div className="space-y-4">
             <h4 className="text-xs font-mono text-[#D03412] uppercase tracking-widest font-bold">
-              NAVIGATION
+              EXPLORE
             </h4>
             <ul className="space-y-2 text-xs font-mono text-[#F8F3EF]/80">
               <li>
+                <Link href="/work" className="hover:text-[#D03412] transition-colors font-medium">
+                  Client Case Studies
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog" className="hover:text-[#D03412] transition-colors font-medium">
+                  Studio Growth Blog
+                </Link>
+              </li>
+              <li>
+                <Link href="/ai-video-advertising" className="hover:text-[#D03412] transition-colors text-[#D03412] font-bold">
+                  AI Video Advertising ★
+                </Link>
+              </li>
+              <li>
                 <a href="#what-we-do" className="hover:text-[#D03412] transition-colors">
                   What We Do
-                </a>
-              </li>
-              <li>
-                <a href="#portfolio" className="hover:text-[#D03412] transition-colors">
-                  Our Work
-                </a>
-              </li>
-              <li>
-                <a href="#ai-ugc" className="hover:text-[#D03412] transition-colors">
-                  AI Advertising
-                </a>
-              </li>
-              <li>
-                <a href="#brand-building" className="hover:text-[#D03412] transition-colors">
-                  Brand Building
                 </a>
               </li>
               <li>
@@ -97,11 +98,6 @@ export default function Footer() {
               <li>
                 <a href="#process" className="hover:text-[#D03412] transition-colors">
                   Our Process
-                </a>
-              </li>
-              <li>
-                <a href="#how-we-work" className="hover:text-[#D03412] transition-colors">
-                  How We Work
                 </a>
               </li>
               <li>
@@ -117,36 +113,46 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 3: Services */}
+          {/* Col 3: Regional Hubs */}
           <div className="space-y-4">
             <h4 className="text-xs font-mono text-[#D03412] uppercase tracking-widest font-bold">
-              DISCIPLINES
+              REGIONAL HUBS
             </h4>
             <ul className="space-y-2 text-xs font-mono text-[#F8F3EF]/80">
               <li>
-                <a href="#brand-building" className="hover:text-[#D03412] transition-colors">
-                  Brand Building
-                </a>
+                <Link href="/haridwar" className="hover:text-[#D03412] transition-colors">
+                  Creative Agency Haridwar
+                </Link>
               </li>
               <li>
-                <a href="#ai-ugc" className="hover:text-[#D03412] transition-colors text-[#D03412] font-bold">
-                  AI Advertising ★
-                </a>
+                <Link href="/rishikesh" className="hover:text-[#D03412] transition-colors">
+                  Creative Agency Rishikesh
+                </Link>
               </li>
               <li>
-                <a href="#what-we-do" className="hover:text-[#D03412] transition-colors">
-                  Website Development
-                </a>
+                <Link href="/website-development-haridwar" className="hover:text-[#D03412] transition-colors">
+                  Web Dev Haridwar
+                </Link>
               </li>
               <li>
-                <a href="#what-we-do" className="hover:text-[#D03412] transition-colors">
-                  Social Media Management
-                </a>
+                <Link href="/website-development-rishikesh" className="hover:text-[#D03412] transition-colors">
+                  Web Dev Rishikesh
+                </Link>
               </li>
               <li>
-                <a href="#what-we-do" className="hover:text-[#D03412] transition-colors">
-                  Meta Ads Optimization
-                </a>
+                <Link href="/social-media-management-haridwar" className="hover:text-[#D03412] transition-colors">
+                  Social Media Haridwar
+                </Link>
+              </li>
+              <li>
+                <Link href="/social-media-management-rishikesh" className="hover:text-[#D03412] transition-colors">
+                  Social Media Rishikesh
+                </Link>
+              </li>
+              <li>
+                <Link href="/branding-agency-haridwar" className="hover:text-[#D03412] transition-colors">
+                  Branding Agency Haridwar
+                </Link>
               </li>
             </ul>
           </div>

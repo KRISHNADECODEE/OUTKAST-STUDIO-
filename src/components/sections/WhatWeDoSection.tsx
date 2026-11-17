@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { ArrowUpRight, Cpu, Monitor, Megaphone, Calendar, Landmark, Check } from "lucide-react";
+import Link from "next/link";
+import { ArrowUpRight, Cpu, Monitor, Megaphone, Calendar, Landmark, Check, MapPin } from "lucide-react";
 import { BackgroundPattern, NoiseOverlay, SectionCounter } from "../ui/PaperAssets";
 import { CircularStamp } from "../ui/BrandAssets";
 
@@ -248,6 +249,41 @@ export default function WhatWeDoSection() {
               </article>
             );
           })}
+        </div>
+
+        {/* Regional Hubs & Contextual Internal Navigation */}
+        <div className="mt-12 p-6 rounded-sm bg-[#5C0F14]/60 border border-[#D03412]/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 paper-grain">
+          <div className="space-y-1">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-[#D03412] font-bold flex items-center gap-1.5">
+              <MapPin size={12} />
+              REGIONAL SERVICE HUBS
+            </span>
+            <p className="text-xs font-mono text-[#F8F3EF]/80">
+              Specialized digital growth &amp; creative services for regional enterprises:
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-4 text-xs font-mono">
+            <Link
+              href="/haridwar"
+              className="text-[#F8F3EF]/90 hover:text-[#D03412] underline underline-offset-4 transition-colors font-medium"
+            >
+              Creative Agency Haridwar
+            </Link>
+            <span className="text-[#D03412]/40 hidden sm:inline">|</span>
+            <Link
+              href="/rishikesh"
+              className="text-[#F8F3EF]/90 hover:text-[#D03412] underline underline-offset-4 transition-colors font-medium"
+            >
+              Creative Agency Rishikesh
+            </Link>
+            <span className="text-[#D03412]/40 hidden sm:inline">|</span>
+            <Link
+              href="/ai-video-advertising"
+              className="text-[#F8F3EF]/90 hover:text-[#D03412] underline underline-offset-4 transition-colors font-medium"
+            >
+              AI Video Advertising
+            </Link>
+          </div>
         </div>
 
         {/* Studio Standard Commitment Strip */}
