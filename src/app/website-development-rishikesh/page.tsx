@@ -142,17 +142,17 @@ export default function WebsiteDevelopmentRishikeshPage() {
         localAngle="Rishikesh's market is global — retreat guests, yoga students and adventure tourists come from every continent. The website is often the first and only thing they see before deciding whether to book. It needs to be excellent."
         breadcrumbs={[
           { label: "Home", href: "/" },
-          { label: "Rishikesh", href: "/rishikesh/" },
-          { label: "Website Development", href: "/website-development-rishikesh/" },
+          { label: "Rishikesh", href: "/rishikesh" },
+          { label: "Website Development", href: "/website-development-rishikesh" },
         ]}
         services={SERVICES}
         faqs={FAQS}
         ctaHeadline="Build Your International-Ready Website"
         ctaBody="Tell us about your retreat centre, yoga studio or tourism business in Rishikesh. We'll design and build a website that earns the trust of international guests and converts them into bookings."
         internalLinks={[
-          { label: "← Rishikesh Overview", href: "/rishikesh/" },
-          { label: "Social Media Rishikesh →", href: "/social-media-management-rishikesh/" },
-          { label: "Website Dev in Haridwar →", href: "/website-development-haridwar/" },
+          { label: "← Rishikesh Overview", href: "/rishikesh" },
+          { label: "Social Media Rishikesh →", href: "/social-media-management-rishikesh" },
+          { label: "Website Dev in Haridwar →", href: "/website-development-haridwar" },
           { label: "← Back to Home", href: "/" },
         ]}
         whatsappMessage="Hi Outkast Studios, I need a website for my Rishikesh business — retreat/yoga/tourism. Can we discuss?"

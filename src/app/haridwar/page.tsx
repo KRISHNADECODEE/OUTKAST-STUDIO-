@@ -136,17 +136,17 @@ export default function HaridwarPage() {
         localAngle="Haridwar's mix of spiritual tourism, local retail and growing hospitality means the market is busy — but most businesses still lack a professional digital presence. That gap is your opportunity."
         breadcrumbs={[
           { label: "Home", href: "/" },
-          { label: "Haridwar", href: "/haridwar/" },
+          { label: "Haridwar", href: "/haridwar" },
         ]}
         services={SERVICES}
         faqs={FAQS}
         ctaHeadline="Let's Build Your Haridwar Brand"
         ctaBody="Whether you need a website, a social media strategy, or a full brand identity — start with a conversation. We'll tell you honestly what will move your business forward."
         internalLinks={[
-          { label: "Website Development in Haridwar →", href: "/website-development-haridwar/" },
-          { label: "Social Media in Haridwar →", href: "/social-media-management-haridwar/" },
-          { label: "Branding in Haridwar →", href: "/branding-agency-haridwar/" },
-          { label: "Also serve Rishikesh →", href: "/rishikesh/" },
+          { label: "Website Development in Haridwar →", href: "/website-development-haridwar" },
+          { label: "Social Media in Haridwar →", href: "/social-media-management-haridwar" },
+          { label: "Branding in Haridwar →", href: "/branding-agency-haridwar" },
+          { label: "Also serve Rishikesh →", href: "/rishikesh" },
           { label: "← Back to Home", href: "/" },
         ]}
         whatsappMessage="Hi Outkast Studios, I'm a business in Haridwar and I'd like to discuss your services."

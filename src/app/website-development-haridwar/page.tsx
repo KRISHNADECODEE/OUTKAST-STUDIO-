@@ -142,17 +142,17 @@ export default function WebsiteDevelopmentHaridwarPage() {
         localAngle="Most Haridwar businesses run on WhatsApp and word of mouth alone — which works until a competitor gets a website and starts appearing on Google first. A professionally built website changes that equation permanently."
         breadcrumbs={[
           { label: "Home", href: "/" },
-          { label: "Haridwar", href: "/haridwar/" },
-          { label: "Website Development", href: "/website-development-haridwar/" },
+          { label: "Haridwar", href: "/haridwar" },
+          { label: "Website Development", href: "/website-development-haridwar" },
         ]}
         services={SERVICES}
         faqs={FAQS}
         ctaHeadline="Build Your Haridwar Business Website"
         ctaBody="Tell us about your business — what you sell, who your customers are, and what you want them to do when they find you online. We'll come back with a clear, honest proposal."
         internalLinks={[
-          { label: "← Haridwar Overview", href: "/haridwar/" },
-          { label: "Social Media Haridwar →", href: "/social-media-management-haridwar/" },
-          { label: "Website Dev in Rishikesh →", href: "/website-development-rishikesh/" },
+          { label: "← Haridwar Overview", href: "/haridwar" },
+          { label: "Social Media Haridwar →", href: "/social-media-management-haridwar" },
+          { label: "Website Dev in Rishikesh →", href: "/website-development-rishikesh" },
           { label: "← Back to Home", href: "/" },
         ]}
         whatsappMessage="Hi Outkast Studios, I need a website built for my Haridwar business. Can we discuss?"

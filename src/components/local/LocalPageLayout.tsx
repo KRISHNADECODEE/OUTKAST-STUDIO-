@@ -41,7 +41,7 @@ export interface LocalPageLayoutProps {
   subheadline: string;
   /** One-liner describing the unique local angle */
   localAngle: string;
-  /** Breadcrumb trail, e.g. [{ label: "Home", href: "/" }, { label: "Haridwar", href: "/haridwar/" }] */
+  /** Breadcrumb trail, e.g. [{ label: "Home", href: "/" }, { label: "Haridwar", href: "/haridwar" }] */
   breadcrumbs: BreadcrumbItem[];
   /** Services to render in the grid */
   services: LocalService[];

@@ -136,16 +136,16 @@ export default function RishikeshPage() {
         localAngle="Rishikesh is a world-famous destination. International visitors choose yoga studios, retreat centres and adventure experiences based almost entirely on digital presence. The gap between a credible online identity and an outdated one is the gap between a full calendar and empty rooms."
         breadcrumbs={[
           { label: "Home", href: "/" },
-          { label: "Rishikesh", href: "/rishikesh/" },
+          { label: "Rishikesh", href: "/rishikesh" },
         ]}
         services={SERVICES}
         faqs={FAQS}
         ctaHeadline="Let's Build Your International Presence"
         ctaBody="Rishikesh businesses deserve digital identities as compelling as the experiences they offer. Tell us about your retreat, studio or tourism brand — and we'll show you what's possible."
         internalLinks={[
-          { label: "Website Development in Rishikesh →", href: "/website-development-rishikesh/" },
-          { label: "Social Media in Rishikesh →", href: "/social-media-management-rishikesh/" },
-          { label: "Also serve Haridwar →", href: "/haridwar/" },
+          { label: "Website Development in Rishikesh →", href: "/website-development-rishikesh" },
+          { label: "Social Media in Rishikesh →", href: "/social-media-management-rishikesh" },
+          { label: "Also serve Haridwar →", href: "/haridwar" },
           { label: "← Back to Home", href: "/" },
         ]}
         whatsappMessage="Hi Outkast Studios, I run a wellness/tourism business in Rishikesh and I'd like to discuss building my digital presence."
