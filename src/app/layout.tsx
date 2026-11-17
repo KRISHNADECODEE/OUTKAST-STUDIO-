@@ -7,6 +7,9 @@ import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://outkast-studio.vercel.app"),
+  alternates: {
+    canonical: "https://outkast-studio.vercel.app",
+  },
   title: "OUTKAST STUDIOS | Creative Growth Studio • Websites, AI Ads & Brand Building",
   description:
     "We build brands that get noticed, digital experiences that build trust, and creative campaigns that move businesses forward. Custom websites, AI UGC advertising, brand building, social media, and Meta Ads.",

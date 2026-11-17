@@ -172,8 +172,8 @@ export default function ArticlePage() {
           <li>
             <strong className="text-[#F8F3EF]">Geographic targeting:</strong>{" "}
             Start with the specific cities you serve — for businesses in
-            <Link href="/haridwar/"> Haridwar</Link> or{" "}
-            <Link href="/rishikesh/">Rishikesh</Link>, targeting a 20–50km
+            <Link href="/haridwar"> Haridwar</Link> or{" "}
+            <Link href="/rishikesh">Rishikesh</Link>, targeting a 20–50km
             radius around your location is usually a sensible starting point
           </li>
           <li>

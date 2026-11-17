@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   description:
     "Professional website design and development for businesses in Haridwar. Custom portfolio websites, business sites and landing pages by Outkast Studios.",
   alternates: {
-    canonical: `${CANONICAL}/website-development-haridwar/`,
+    canonical: `${CANONICAL}/website-development-haridwar`,
   },
   openGraph: {
     title: "Website Development Company in Haridwar | Outkast Studios",
     description:
       "Professional website design and development for businesses in Haridwar. Custom portfolio websites, business sites and landing pages by Outkast Studios.",
-    url: `${CANONICAL}/website-development-haridwar/`,
+    url: `${CANONICAL}/website-development-haridwar`,
     siteName: "Outkast Studios",
     type: "website",
   },
@@ -34,13 +34,13 @@ const breadcrumbJsonLd = {
       "@type": "ListItem",
       position: 2,
       name: "Haridwar",
-      item: `${CANONICAL}/haridwar/`,
+      item: `${CANONICAL}/haridwar`,
     },
     {
       "@type": "ListItem",
       position: 3,
       name: "Website Development",
-      item: `${CANONICAL}/website-development-haridwar/`,
+      item: `${CANONICAL}/website-development-haridwar`,
     },
   ],
 };

@@ -110,7 +110,7 @@ export default function ArticlePage() {
           In this guide we break down what actually determines website cost, the
           different types of websites local businesses typically need, and what
           to look for in a{" "}
-          <Link href="/website-development-haridwar/">
+          <Link href="/website-development-haridwar">
             website development company in Haridwar
           </Link>{" "}
           before you sign anything.
@@ -259,7 +259,7 @@ export default function ArticlePage() {
         <p className="text-[#F8F3EF]/80 leading-relaxed">
           If you are a business in Haridwar looking to establish a credible online
           presence,{" "}
-          <Link href="/haridwar/">Outkast Studios works with local businesses</Link>{" "}
+          <Link href="/haridwar">Outkast Studios works with local businesses</Link>{" "}
           across the region. We build custom websites designed for performance,
           mobile readability, and local search visibility — not templates recycled
           from a library.

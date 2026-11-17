@@ -242,11 +242,11 @@ export default function ArticlePage() {
         <p className="text-[#F8F3EF]/80 leading-relaxed">
           If you are ready to build a website that actually works for your
           business,{" "}
-          <Link href="/website-development-haridwar/">
+          <Link href="/website-development-haridwar">
             our website development service in Haridwar
           </Link>{" "}
           and{" "}
-          <Link href="/website-development-rishikesh/">Rishikesh</Link>{" "}
+          <Link href="/website-development-rishikesh">Rishikesh</Link>{" "}
           is built around this exact brief.{" "}
           <a href="/#contact">Talk to us about what you need.</a>
         </p>

@@ -236,11 +236,11 @@ export default function ArticlePage() {
 
         <p className="text-[#F8F3EF]/80 leading-relaxed">
           Our{" "}
-          <Link href="/social-media-management-haridwar/">
+          <Link href="/social-media-management-haridwar">
             social media management packages in Haridwar
           </Link>{" "}
           and{" "}
-          <Link href="/social-media-management-rishikesh/">Rishikesh</Link>{" "}
+          <Link href="/social-media-management-rishikesh">Rishikesh</Link>{" "}
           are built around brand-first content strategy, not content volume.
           We plan monthly, approve with you before anything is published, produce
           Reels and graphics that actually fit your visual identity, and report

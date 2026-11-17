@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   description:
     "AI-generated UGC advertisements, product films and performance video ads for Indian businesses. Scale creative production without traditional film crews.",
   alternates: {
-    canonical: `${CANONICAL}/ai-video-advertising/`,
+    canonical: `${CANONICAL}/ai-video-advertising`,
   },
   openGraph: {
     title: "AI Video Advertising Agency India | AI UGC Ads | Outkast Studios",
     description:
       "AI-generated UGC advertisements, product films and performance video ads for Indian businesses. Scale creative production without traditional film crews.",
-    url: `${CANONICAL}/ai-video-advertising/`,
+    url: `${CANONICAL}/ai-video-advertising`,
     siteName: "Outkast Studios",
     type: "website",
   },
@@ -34,7 +34,7 @@ const breadcrumbJsonLd = {
       "@type": "ListItem",
       position: 2,
       name: "AI Video Advertising",
-      item: `${CANONICAL}/ai-video-advertising/`,
+      item: `${CANONICAL}/ai-video-advertising`,
     },
   ],
 };

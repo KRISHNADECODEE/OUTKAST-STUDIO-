@@ -197,8 +197,8 @@ export default function ArticlePage() {
 
         <p className="text-[#F8F3EF]/80 leading-relaxed">
           Businesses in{" "}
-          <Link href="/haridwar/">Haridwar</Link> and{" "}
-          <Link href="/rishikesh/">Rishikesh</Link> in tourism,
+          <Link href="/haridwar">Haridwar</Link> and{" "}
+          <Link href="/rishikesh">Rishikesh</Link> in tourism,
           hospitality, wellness, and retail have found this format useful for
           promoting specific services or packages to targeted audiences.
         </p>
@@ -239,7 +239,7 @@ export default function ArticlePage() {
           If you are curious whether AI video advertising could work for your
           local business, the first step is understanding whether your offer and
           audience are a good fit for this format. Our{" "}
-          <Link href="/ai-video-advertising/">
+          <Link href="/ai-video-advertising">
             AI video advertising service
           </Link>{" "}
           combines script development, AI creative production, and Meta campaign

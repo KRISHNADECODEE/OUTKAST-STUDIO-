@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   description:
     "Social media content creation, Reels production, account management and growth strategy for Haridwar businesses. Outkast Studios handles your complete Instagram and Facebook presence.",
   alternates: {
-    canonical: `${CANONICAL}/social-media-management-haridwar/`,
+    canonical: `${CANONICAL}/social-media-management-haridwar`,
   },
   openGraph: {
     title: "Social Media Management Agency in Haridwar | Outkast Studios",
     description:
       "Social media content creation, Reels production, account management and growth strategy for Haridwar businesses. Outkast Studios handles your complete Instagram and Facebook presence.",
-    url: `${CANONICAL}/social-media-management-haridwar/`,
+    url: `${CANONICAL}/social-media-management-haridwar`,
     siteName: "Outkast Studios",
     type: "website",
   },
@@ -34,13 +34,13 @@ const breadcrumbJsonLd = {
       "@type": "ListItem",
       position: 2,
       name: "Haridwar",
-      item: `${CANONICAL}/haridwar/`,
+      item: `${CANONICAL}/haridwar`,
     },
     {
       "@type": "ListItem",
       position: 3,
       name: "Social Media Management",
-      item: `${CANONICAL}/social-media-management-haridwar/`,
+      item: `${CANONICAL}/social-media-management-haridwar`,
     },
   ],
 };

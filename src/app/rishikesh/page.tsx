@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   description:
     "Outkast Studios serves Rishikesh businesses with brand building, website development, social media management, AI advertising and Meta Ads campaigns.",
   alternates: {
-    canonical: `${CANONICAL}/rishikesh/`,
+    canonical: `${CANONICAL}/rishikesh`,
   },
   openGraph: {
     title: "Creative Agency in Rishikesh | Outkast Studios",
     description:
       "Outkast Studios serves Rishikesh businesses with brand building, website development, social media management, AI advertising and Meta Ads campaigns.",
-    url: `${CANONICAL}/rishikesh/`,
+    url: `${CANONICAL}/rishikesh`,
     siteName: "Outkast Studios",
     type: "website",
   },
@@ -34,7 +34,7 @@ const breadcrumbJsonLd = {
       "@type": "ListItem",
       position: 2,
       name: "Rishikesh",
-      item: `${CANONICAL}/rishikesh/`,
+      item: `${CANONICAL}/rishikesh`,
     },
   ],
 };

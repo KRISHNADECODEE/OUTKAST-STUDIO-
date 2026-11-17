@@ -146,11 +146,11 @@ export default function ArticlePage() {
 
         <p className="text-[#F8F3EF]/80 leading-relaxed">
           A professional{" "}
-          <Link href="/social-media-management-haridwar/">
+          <Link href="/social-media-management-haridwar">
             social media management package in Haridwar
           </Link>{" "}
           or{" "}
-          <Link href="/social-media-management-rishikesh/">Rishikesh</Link>{" "}
+          <Link href="/social-media-management-rishikesh">Rishikesh</Link>{" "}
           typically covers:
         </p>
 

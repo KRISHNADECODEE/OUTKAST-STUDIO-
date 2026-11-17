@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   description:
     "Custom website design and development for Rishikesh's yoga studios, retreats, adventure businesses and hospitality brands. Mobile-first, conversion-focused.",
   alternates: {
-    canonical: `${CANONICAL}/website-development-rishikesh/`,
+    canonical: `${CANONICAL}/website-development-rishikesh`,
   },
   openGraph: {
     title: "Website Development Company in Rishikesh | Outkast Studios",
     description:
       "Custom website design and development for Rishikesh's yoga studios, retreats, adventure businesses and hospitality brands. Mobile-first, conversion-focused.",
-    url: `${CANONICAL}/website-development-rishikesh/`,
+    url: `${CANONICAL}/website-development-rishikesh`,
     siteName: "Outkast Studios",
     type: "website",
   },
@@ -34,13 +34,13 @@ const breadcrumbJsonLd = {
       "@type": "ListItem",
       position: 2,
       name: "Rishikesh",
-      item: `${CANONICAL}/rishikesh/`,
+      item: `${CANONICAL}/rishikesh`,
     },
     {
       "@type": "ListItem",
       position: 3,
       name: "Website Development",
-      item: `${CANONICAL}/website-development-rishikesh/`,
+      item: `${CANONICAL}/website-development-rishikesh`,
     },
   ],
 };

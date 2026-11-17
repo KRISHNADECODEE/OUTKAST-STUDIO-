@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   description:
     "Brand identity, visual direction and brand positioning for businesses in Haridwar. Logo design, brand guidelines, storytelling and digital brand experiences.",
   alternates: {
-    canonical: `${CANONICAL}/branding-agency-haridwar/`,
+    canonical: `${CANONICAL}/branding-agency-haridwar`,
   },
   openGraph: {
     title: "Branding Agency in Haridwar | Outkast Studios",
     description:
       "Brand identity, visual direction and brand positioning for businesses in Haridwar. Logo design, brand guidelines, storytelling and digital brand experiences.",
-    url: `${CANONICAL}/branding-agency-haridwar/`,
+    url: `${CANONICAL}/branding-agency-haridwar`,
     siteName: "Outkast Studios",
     type: "website",
   },
@@ -34,13 +34,13 @@ const breadcrumbJsonLd = {
       "@type": "ListItem",
       position: 2,
       name: "Haridwar",
-      item: `${CANONICAL}/haridwar/`,
+      item: `${CANONICAL}/haridwar`,
     },
     {
       "@type": "ListItem",
       position: 3,
       name: "Branding Agency",
-      item: `${CANONICAL}/branding-agency-haridwar/`,
+      item: `${CANONICAL}/branding-agency-haridwar`,
     },
   ],
 };

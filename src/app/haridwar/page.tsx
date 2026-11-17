@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   description:
     "Outkast Studios is a creative growth studio serving businesses in Haridwar. Brand identity, website development, social media, AI advertising and Meta Ads.",
   alternates: {
-    canonical: `${CANONICAL}/haridwar/`,
+    canonical: `${CANONICAL}/haridwar`,
   },
   openGraph: {
     title: "Creative Agency in Haridwar | Outkast Studios",
     description:
       "Outkast Studios is a creative growth studio serving businesses in Haridwar. Brand identity, website development, social media, AI advertising and Meta Ads.",
-    url: `${CANONICAL}/haridwar/`,
+    url: `${CANONICAL}/haridwar`,
     siteName: "Outkast Studios",
     type: "website",
   },
@@ -34,7 +34,7 @@ const breadcrumbJsonLd = {
       "@type": "ListItem",
       position: 2,
       name: "Haridwar",
-      item: `${CANONICAL}/haridwar/`,
+      item: `${CANONICAL}/haridwar`,
     },
   ],
 };

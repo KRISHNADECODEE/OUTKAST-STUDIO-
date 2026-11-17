@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   description:
     "Complete social media management for Rishikesh yoga studios, retreat centres, wellness brands and adventure tourism. Content strategy, Reels, and international audience engagement.",
   alternates: {
-    canonical: `${CANONICAL}/social-media-management-rishikesh/`,
+    canonical: `${CANONICAL}/social-media-management-rishikesh`,
   },
   openGraph: {
     title: "Social Media Management Agency in Rishikesh | Outkast Studios",
     description:
       "Complete social media management for Rishikesh yoga studios, retreat centres, wellness brands and adventure tourism. Content strategy, Reels, and international audience engagement.",
-    url: `${CANONICAL}/social-media-management-rishikesh/`,
+    url: `${CANONICAL}/social-media-management-rishikesh`,
     siteName: "Outkast Studios",
     type: "website",
   },
@@ -34,13 +34,13 @@ const breadcrumbJsonLd = {
       "@type": "ListItem",
       position: 2,
       name: "Rishikesh",
-      item: `${CANONICAL}/rishikesh/`,
+      item: `${CANONICAL}/rishikesh`,
     },
     {
       "@type": "ListItem",
       position: 3,
       name: "Social Media Management",
-      item: `${CANONICAL}/social-media-management-rishikesh/`,
+      item: `${CANONICAL}/social-media-management-rishikesh`,
     },
   ],
 };

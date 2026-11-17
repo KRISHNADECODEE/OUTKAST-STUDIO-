@@ -100,7 +100,7 @@ export default function ArticlePage() {
       <article className="container mx-auto px-6 max-w-3xl pb-24 prose prose-invert prose-headings:font-editorial prose-a:text-[#D03412] prose-a:no-underline hover:prose-a:underline">
         <p className="text-lg leading-relaxed text-[#F8F3EF]/90">
           The right{" "}
-          <Link href="/social-media-management-rishikesh/">
+          <Link href="/social-media-management-rishikesh">
             social media agency in Rishikesh
           </Link>{" "}
           should understand your audience, your brand tone, and the visual
@@ -264,7 +264,7 @@ export default function ArticlePage() {
 
         <p className="text-[#F8F3EF]/80 leading-relaxed">
           If you are ready to have your{" "}
-          <Link href="/rishikesh/">Rishikesh brand</Link> represented properly
+          <Link href="/rishikesh">Rishikesh brand</Link> represented properly
           on social media, we are happy to have a conversation about what that
           could look like.{" "}
           <a href="/#contact">Get in touch here.</a>
