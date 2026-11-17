@@ -10,9 +10,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://outkast-studio.vercel.app",
   },
-  title: "OUTKAST STUDIOS | Creative Growth Studio • Websites, AI Ads & Brand Building",
+  title: "Outkast Studios | Creative Growth Studio",
   description:
-    "We build brands that get noticed, digital experiences that build trust, and creative campaigns that move businesses forward. Custom websites, AI UGC advertising, brand building, social media, and Meta Ads.",
+    "We help businesses grow with premium website development, AI video advertising, branding, social media management and Meta Ads.",
   keywords: [
     "Creative agency India",
     "AI video advertising agency",
@@ -27,19 +27,29 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "OUTKAST STUDIOS" }],
   openGraph: {
-    title: "OUTKAST STUDIOS | Creative Growth Studio",
+    title: "Outkast Studios | Creative Growth Studio",
     description:
-      "We build brands that get noticed, digital experiences that build trust, and creative campaigns that move businesses forward.",
+      "We help businesses grow with premium website development, AI video advertising, branding, social media management and Meta Ads.",
     url: "https://outkast-studio.vercel.app",
-    siteName: "OUTKAST STUDIOS",
+    siteName: "Outkast Studios",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "https://outkast-studio.vercel.app/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Outkast Studios — Creative Growth Studio. Websites, AI Video Ads, Branding, Digital Growth.",
+        type: "image/png",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "OUTKAST STUDIOS | Creative Growth Studio",
+    title: "Outkast Studios | Creative Growth Studio",
     description:
-      "We build brands that get noticed, digital experiences that build trust, and creative campaigns that move businesses forward.",
+      "We help businesses grow with premium website development, AI video advertising, branding, social media management and Meta Ads.",
+    images: ["https://outkast-studio.vercel.app/og-image.png"],
   },
   icons: {
     icon: [
