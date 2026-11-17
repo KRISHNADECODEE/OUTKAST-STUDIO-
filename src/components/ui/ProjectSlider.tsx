@@ -4,7 +4,7 @@ import * as React from "react";
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export type SlideProject = {
@@ -15,6 +15,8 @@ export type SlideProject = {
   headline: string;
   imageSrc: string;
   url: string;
+  servicesProvided?: string[];
+  summary?: string;
 };
 
 interface ProjectSliderProps {
@@ -22,8 +24,6 @@ interface ProjectSliderProps {
   className?: string;
 }
 
-/* Slide timing lifted straight from the reference component: the frame slides
-   on the Y axis, the copy on the X axis, both direction-aware. */
 const EASE = [0.4, 0, 0.2, 1] as const;
 const DURATION = 0.6;
 
@@ -67,7 +67,7 @@ export const ProjectSlider = ({ projects, className }: ProjectSliderProps) => {
   const handleNext = () => go(currentIndex + 1, "right");
   const handlePrev = () => go(currentIndex - 1, "left");
 
-  // The three upcoming projects, so the strip never shows the one on screen.
+  // Upcoming thumbnails
   const upcoming = Array.from({ length: Math.min(3, total - 1) }, (_, i) => ({
     index: (currentIndex + i + 1) % total,
     project: projects[(currentIndex + i + 1) % total],
@@ -79,11 +79,10 @@ export const ProjectSlider = ({ projects, className }: ProjectSliderProps) => {
   return (
     <div className={cn("relative w-full", className)}>
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-stretch">
-        {/* ---- Left rail: counter, label, thumbnails ---- */}
-        {/* On phones this drops below the copy: image, then text, then thumbs */}
+        {/* Left rail: counter, label, thumbnails */}
         <div className="md:col-span-3 flex flex-col justify-between order-3 md:order-1">
           <div className="flex items-center md:items-start justify-between md:flex-col md:gap-6">
-            <span className="text-xs font-mono tracking-widest tabular-nums text-[#F8F3EF]/60">
+            <span className="text-xs font-mono tracking-widest tabular-nums text-[#F8F3EF]/70">
               <span className="text-[#D03412] font-bold">
                 {String(currentIndex + 1).padStart(2, "0")}
               </span>
@@ -92,7 +91,7 @@ export const ProjectSlider = ({ projects, className }: ProjectSliderProps) => {
             </span>
 
             <h3 className="hidden md:block text-[10px] font-mono font-bold tracking-[0.35em] uppercase text-[#F8F3EF]/40 [writing-mode:vertical-rl] rotate-180">
-              Selected Work
+              Verified Client Work
             </h3>
           </div>
 
@@ -118,12 +117,9 @@ export const ProjectSlider = ({ projects, className }: ProjectSliderProps) => {
           </div>
         </div>
 
-        {/* ---- Centre: the sliding frame ---- */}
+        {/* Centre: Sliding Mockup Frame */}
         <div className="md:col-span-4 order-1 md:order-2">
           <motion.div
-            /* Swipe to change slides on touch. dragDirectionLock plus
-               touch-pan-y means a vertical drag still scrolls the page
-               natively rather than being swallowed by the slider. */
             drag="x"
             dragDirectionLock
             dragConstraints={{ left: 0, right: 0 }}
@@ -134,7 +130,7 @@ export const ProjectSlider = ({ projects, className }: ProjectSliderProps) => {
               if (info.offset.x < -threshold) handleNext();
               else if (info.offset.x > threshold) handlePrev();
             }}
-            className="relative w-full aspect-[9/13] md:aspect-auto md:h-[480px] overflow-hidden rounded-sm border border-[#D03412]/30 bg-[#111111] touch-pan-y select-none cursor-grab active:cursor-grabbing"
+            className="relative w-full aspect-[9/13] md:aspect-auto md:h-[500px] overflow-hidden rounded-sm border border-[#D03412]/30 bg-[#111111] touch-pan-y select-none cursor-grab active:cursor-grabbing shadow-2xl"
           >
             <AnimatePresence initial={false} custom={direction}>
               <motion.div
@@ -155,24 +151,24 @@ export const ProjectSlider = ({ projects, className }: ProjectSliderProps) => {
                   className="object-cover"
                   priority
                 />
-                <span className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-80" />
+                <span className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-85" />
               </motion.div>
             </AnimatePresence>
 
-            <span className="absolute top-4 right-4 z-10 text-[10px] font-mono font-bold tracking-widest text-[#D03412]">
-              {String(currentIndex + 1).padStart(2, "0")}
+            <span className="absolute top-4 right-4 z-10 text-[10px] font-mono font-bold tracking-widest text-[#D03412] bg-[#111111]/80 px-2.5 py-1 rounded-sm border border-[#D03412]/40">
+              {String(currentIndex + 1).padStart(2, "0")} • VERIFIED
             </span>
 
-            {/* Swipe affordance, touch only */}
-            <span className="md:hidden absolute bottom-3 left-1/2 -translate-x-1/2 z-10 text-[9px] font-mono tracking-[0.2em] uppercase text-[#F8F3EF]/50">
-              swipe
+            {/* Swipe affordance on touch */}
+            <span className="md:hidden absolute bottom-3 left-1/2 -translate-x-1/2 z-10 text-[9px] font-mono tracking-[0.2em] uppercase text-[#F8F3EF]/60">
+              swipe left / right
             </span>
           </motion.div>
         </div>
 
-        {/* ---- Right: copy and controls ---- */}
+        {/* Right: Project Details & Controls */}
         <div className="md:col-span-5 flex flex-col justify-between order-2 md:order-3">
-          <div className="relative overflow-hidden md:pt-10 min-h-[210px]">
+          <div className="relative overflow-hidden md:pt-6 min-h-[280px]">
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
                 key={currentIndex}
@@ -182,27 +178,54 @@ export const ProjectSlider = ({ projects, className }: ProjectSliderProps) => {
                 animate="center"
                 exit="exit"
                 transition={transition}
+                className="space-y-4"
               >
-                <p className="text-[11px] font-mono font-bold tracking-[0.25em] uppercase text-[#D03412]">
-                  {active.category}
-                </p>
+                <div className="flex items-center gap-2">
+                  <span className="text-[11px] font-mono font-bold tracking-[0.25em] uppercase text-[#D03412]">
+                    {active.category}
+                  </span>
+                  <span className="text-[#F8F3EF]/40">•</span>
+                  <span className="text-[10px] font-mono tracking-widest uppercase text-[#F8F3EF]/60">
+                    {active.tagline}
+                  </span>
+                </div>
 
-                <h3 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-editorial font-extrabold uppercase leading-[0.92] tracking-tight text-[#F8F3EF]">
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-editorial font-extrabold uppercase leading-[0.92] tracking-tight text-[#F8F3EF]">
                   {active.headline}
                 </h3>
 
-                <p className="mt-4 text-sm font-mono text-[#F8F3EF]/70 border-l-2 border-[#D03412] pl-3">
-                  {active.tagline}
+                <h4 className="text-sm font-mono tracking-wider uppercase text-[#D03412] font-bold">
+                  {active.title}
+                </h4>
+
+                {/* Honest Project Summary */}
+                <p className="text-xs sm:text-sm font-mono text-[#F8F3EF]/80 leading-relaxed border-l-2 border-[#D03412] pl-3">
+                  {active.summary || active.tagline}
                 </p>
 
-                <p className="mt-5 text-xs font-mono tracking-widest uppercase text-[#F8F3EF]/50">
-                  {active.title}
-                </p>
+                {/* Services Provided Chips */}
+                {active.servicesProvided && active.servicesProvided.length > 0 && (
+                  <div className="pt-2">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#F8F3EF]/50 block mb-1.5 font-bold">
+                      Services Delivered:
+                    </span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {active.servicesProvided.map((service, sIdx) => (
+                        <span
+                          key={sIdx}
+                          className="text-[10px] font-mono uppercase tracking-wider bg-[#8D161D]/80 border border-[#D03412]/30 text-[#F8F3EF]/90 px-2 py-0.5 rounded-sm"
+                        >
+                          {service}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </motion.div>
             </AnimatePresence>
           </div>
 
-          <div className="flex items-center gap-3 mt-8">
+          <div className="flex items-center gap-3 mt-8 pt-4 border-t border-[#D03412]/20">
             <button
               type="button"
               onClick={handlePrev}
@@ -228,7 +251,7 @@ export const ProjectSlider = ({ projects, className }: ProjectSliderProps) => {
                 rel="noopener noreferrer"
                 className="interactive ml-auto inline-flex items-center gap-2 pb-1 border-b border-[#D03412] text-[#D03412] font-mono text-xs tracking-[0.2em] uppercase font-bold hover:text-[#F8F3EF] transition-colors"
               >
-                <span>LIVE DEMO</span>
+                <span>VISIT LIVE DEMO</span>
                 <ExternalLink size={13} />
               </a>
             )}

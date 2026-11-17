@@ -1,40 +1,119 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight, Cpu, Monitor, Megaphone, Calendar, Landmark, Check } from "lucide-react";
+import { BackgroundPattern, NoiseOverlay, SectionCounter } from "../ui/PaperAssets";
 import { CircularStamp } from "../ui/BrandAssets";
-import { BackgroundPattern, NoiseOverlay } from "../ui/PaperAssets";
 
-/* ==========================================================================
-   WHAT WE DO — torn paper reveal slide
-   The right half is a three-layer paper composite: a cream sliver is the
-   "underneath", and two dark red torn sheets sit on top of it so the brush
-   OUT reads as something exposed by tearing the page open.
-   ========================================================================== */
-
-const BRANDS = ["MONKMODE®", "WILDLENS", "LUNE", "KAIROZ", "THIRDEYE"];
-
-/* The reveal is full-bleed below lg and 52% of the viewport above it; each
-   sheet is ~110% of that. Without this next/image assumes the largest
-   candidate and ships a 3840px asset to a phone. */
-const PAPER_SIZES = "(min-width: 1024px) 60vw, 112vw";
-
-/* Tiny registration crosses, as on the brand sheet. */
-const Crosshair = ({ className = "" }: { className?: string }) => (
-  <svg viewBox="0 0 20 20" className={`absolute text-[#D03412]/50 ${className}`} aria-hidden="true">
-    <path d="M10 2v16M2 10h16" stroke="currentColor" strokeWidth="1" fill="none" />
-  </svg>
-);
+const SERVICES = [
+  {
+    num: "01",
+    id: "brand-building",
+    title: "BRAND BUILDING",
+    category: "IDENTITY & POSITIONING",
+    summary: "Brand identity, positioning, visual direction and storytelling.",
+    description:
+      "We build distinct brand identities that cut through generic industry noise. From core market positioning and naming to typography systems and editorial storytelling, we give your brand a voice people remember.",
+    deliverables: [
+      "Strategic Market Positioning",
+      "Visual Identity & Logo Systems",
+      "Editorial Brand Guidelines & Voice",
+      "Typography, Color & Iconography",
+    ],
+    icon: Landmark,
+    accent: "border-[#D03412]/40",
+    isFlagship: false,
+  },
+  {
+    num: "02",
+    id: "ai-advertising",
+    title: "AI ADVERTISING",
+    category: "FLAGSHIP SERVICE",
+    summary: "AI UGC advertisements, product films, promotional videos and creative campaigns.",
+    description:
+      "Hyper-realistic virtual creators, 3D cinematic product films, and scroll-stopping video hooks engineered specifically for Instagram Reels, TikTok, and YouTube Shorts. Zero studio logistics or production delays.",
+    deliverables: [
+      "AI UGC Video Hooks & Commercials",
+      "3D Cinematic Product Films",
+      "Viral Scripting & Creative Direction",
+      "Multi-Variant Ad Creative Sprints",
+    ],
+    icon: Cpu,
+    accent: "border-[#D03412] ring-1 ring-[#D03412]/50",
+    isFlagship: true,
+  },
+  {
+    num: "03",
+    id: "website-development",
+    title: "WEBSITE DEVELOPMENT",
+    category: "DIGITAL EXPERIENCES",
+    summary: "Portfolio websites, business websites and conversion-focused landing pages.",
+    description:
+      "Custom full-stack web applications built from scratch with Next.js and Tailwind CSS. We don't use cookie-cutter templates—every interface is engineered for speed, editorial elegance, and frictionless conversion.",
+    deliverables: [
+      "Custom Portfolio & Agency Websites",
+      "High-Converting Sales Landing Pages",
+      "Smooth Choreographed Micro-Interactions",
+      "Sub-Second Performance & Responsive Code",
+    ],
+    icon: Monitor,
+    accent: "border-[#D03412]/40",
+    isFlagship: false,
+  },
+  {
+    num: "04",
+    id: "social-media-management",
+    title: "SOCIAL MEDIA MANAGEMENT",
+    category: "CREATIVE PRODUCTION",
+    summary: "Content calendars, Reels, creative production, account management and strategy.",
+    description:
+      "Complete social channel ownership that turns casual viewers into brand believers. We produce structured 30-day content roadmaps, high-retention short-form video, editorial carousels, and engaging copy.",
+    deliverables: [
+      "30-Day Structured Content Roadmaps",
+      "Reels, Shorts & Carousel Production",
+      "High-Converting Copy & Hook Formulas",
+      "Feed Curation & Brand Consistency",
+    ],
+    icon: Calendar,
+    accent: "border-[#D03412]/40",
+    isFlagship: false,
+  },
+  {
+    num: "05",
+    id: "meta-ads",
+    title: "META ADS",
+    category: "PERFORMANCE MARKETING",
+    summary: "Facebook and Instagram advertising, campaign management and performance optimization.",
+    description:
+      "Data-driven advertising campaigns combining our high-converting creative assets with precision audience targeting. We test creative hooks rigorously, scale winning ad sets, and optimize for real commercial returns.",
+    deliverables: [
+      "Full-Funnel Campaign Architecture",
+      "Creative Split-Testing & Iteration",
+      "Pixel Tracking & Conversion Optimization",
+      "Audience Segmentation & Retargeting",
+    ],
+    icon: Megaphone,
+    accent: "border-[#D03412]/40",
+    isFlagship: false,
+  },
+];
 
 export default function WhatWeDoSection() {
+  const [activeTab, setActiveTab] = useState<string>("all");
+
+  const filteredServices =
+    activeTab === "all"
+      ? SERVICES
+      : SERVICES.filter((s) => s.id === activeTab);
+
   return (
     <section
       id="what-we-do"
-      className="relative min-h-screen pt-28 pb-10 px-6 sm:px-10 lg:px-16 flex flex-col justify-between bg-[#5C0F14] overflow-hidden paper-grain border-b border-[#D03412]/30"
+      className="relative min-h-screen py-28 px-6 sm:px-10 lg:px-16 bg-[#5C0F14] overflow-hidden paper-grain border-b border-[#D03412]/30"
     >
       {/* Wrinkled paper ground */}
-      <div className="absolute inset-0 opacity-60 pointer-events-none mix-blend-overlay">
+      <div className="absolute inset-0 opacity-40 pointer-events-none mix-blend-overlay">
         <Image
           src="/assets/dark_red_wrinkled_paper_1785853551188.jpg"
           alt=""
@@ -44,170 +123,148 @@ export default function WhatWeDoSection() {
         />
       </div>
 
-      {/* Vignette so the edges fall away and the tear carries the light */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 85% 70% at 62% 45%, rgba(140,26,26,0.55) 0%, rgba(64,10,14,0.45) 55%, rgba(30,5,7,0.85) 100%)",
-        }}
-      />
-
       <BackgroundPattern variant="crosses" opacity={0.05} size={56} />
-      <NoiseOverlay variant="grain02" opacity={0.22} />
+      <NoiseOverlay variant="grain02" opacity={0.2} />
 
-      {/* ================= TORN PAPER REVEAL =================
-          Three layers read as one tear: the cream band is the exposed paper,
-          and the two red sheets close over it from above and below. Geometry
-          was tuned against a render of the reference slide. */}
-      <div className="absolute inset-y-0 right-0 w-full lg:w-[46%] xl:w-[52%] pointer-events-none select-none z-[5] opacity-30 lg:opacity-100">
-        {/* Cream underlayer, with the brush mark sitting on it */}
-        <div className="absolute top-[20%] -left-[4%] w-[106%] rotate-[-6deg] drop-shadow-[0_25px_45px_rgba(0,0,0,0.5)]">
-          <Image
-            src="/assets/torn-cream-cut.png"
-            alt=""
-            width={1536}
-            height={1024}
-            sizes={PAPER_SIZES}
-            className="w-full h-auto"
-          />
-        </div>
+      <div className="max-w-7xl mx-auto relative z-10 space-y-16">
+        {/* Section Header */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 border-b border-[#D03412]/20 pb-10">
+          <div className="space-y-4 max-w-2xl">
+            <SectionCounter index={2} label="What We Do" />
 
-        <span className="absolute left-[28%] top-[34%] font-brush text-[#C1300F] text-[clamp(4rem,11vw,11rem)] leading-none -rotate-[7deg] z-[6] drop-shadow-[0_4px_10px_rgba(0,0,0,0.2)]">
-          OUT
-        </span>
-
-        <span className="absolute left-[30%] top-[54%] z-[6] text-[9px] font-mono tracking-[0.18em] text-[#7C1117]/75 uppercase leading-relaxed -rotate-[6deg]">
-          OUTKAST STUDIOS
-          <br />© 2026
-        </span>
-
-        {/* Dark red sheet tearing away above the reveal */}
-        <div className="absolute -top-[24%] -left-[8%] w-[112%] rotate-[-6deg] z-[7] drop-shadow-[0_30px_50px_rgba(0,0,0,0.55)]">
-          <Image
-            src="/assets/torn-red-sheet-cut.png"
-            alt=""
-            width={1536}
-            height={1024}
-            sizes={PAPER_SIZES}
-            className="w-full h-auto"
-          />
-        </div>
-
-        {/* Second fragment curling in below the reveal */}
-        <div className="absolute top-[44%] -left-[4%] w-[104%] rotate-[-6deg] z-[7] drop-shadow-[0_25px_40px_rgba(0,0,0,0.5)]">
-          <Image
-            src="/assets/torn-red-sliver-cut.png"
-            alt=""
-            width={1536}
-            height={1024}
-            sizes={PAPER_SIZES}
-            className="w-full h-auto"
-          />
-        </div>
-
-        <Crosshair className="w-3 h-3 top-[36%] right-[10%] z-[8]" />
-        <Crosshair className="w-2.5 h-2.5 bottom-[30%] left-[16%] z-[8]" />
-      </div>
-
-      {/* Annotation, above the paper */}
-      <p className="hidden lg:block absolute top-[22%] right-8 z-20 text-[10px] font-mono tracking-[0.16em] text-[#D03412] uppercase leading-[1.7] font-bold">
-        CREATIVE
-        <br />
-        WITHOUT
-        <br />
-        RULES.
-      </p>
-
-      {/* ================= COPY ================= */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full my-auto">
-        {/* Kept clear of the reveal, which owns the right 46% at lg and 52%
-            from xl. At exactly 1024 the copy has the least room, so it steps
-            down there rather than running under the paper. */}
-        <div className="max-w-md sm:max-w-lg lg:max-w-[28rem] xl:max-w-[34rem] space-y-5">
-          {/* Eyebrow */}
-          <div className="space-y-2">
-            <span className="text-[11px] font-mono tracking-[0.25em] text-[#D03412] uppercase font-bold block">
-              WHAT WE DO
-            </span>
-            <span className="block w-24 h-px bg-[#D03412]/60" />
-          </div>
-
-          {/* Headline */}
-          {/* "EXPERIENCES" is a single unbreakable word ~11.9x the font size
-              wide, so the type has to be sized off the column, not chosen by
-              eye — otherwise it spills over the paper (and gets clipped by the
-              section's overflow on small screens). */}
-          <h2 className="font-editorial font-extrabold uppercase text-[#F8F3EF] leading-[0.88] tracking-tight text-[clamp(1.5rem,7vw,2.25rem)] lg:text-[clamp(2rem,3.2vw,2.6rem)]">
-            WE DESIGN
-            <br />
-            EXPERIENCES
-            <br />
-            <span className="inline-flex flex-wrap items-baseline gap-x-4">
-              THAT
-              <span className="font-brush text-[#D03412] normal-case tracking-normal text-[clamp(1.4rem,6.5vw,2rem)] lg:text-[clamp(1.75rem,2.9vw,2.4rem)] -rotate-2">
-                Hit Different.
+            <h2 className="text-4xl sm:text-6xl lg:text-7xl font-editorial font-extrabold uppercase text-[#F8F3EF] leading-[0.9] tracking-tight">
+              SERVICES DESIGNED TO{" "}
+              <span className="font-brush text-[#D03412] capitalize block sm:inline">
+                Build &amp; Scale.
               </span>
-            </span>
-          </h2>
+            </h2>
 
-          {/* Body */}
-          <p className="text-sm font-sans text-[#F8F3EF]/75 leading-relaxed max-w-md">
-            We craft bold, high-performance websites and digital experiences for
-            brands that don&apos;t follow trends, they set them.
-          </p>
-
-          {/* CTA */}
-          <a
-            href="#services"
-            className="interactive group inline-flex items-center gap-3 pb-1 border-b border-[#D03412]/60 hover:border-[#D03412] text-[#D03412] font-mono text-xs tracking-[0.2em] uppercase font-bold transition-colors"
-          >
-            <span>EXPLORE SERVICES</span>
-            <ArrowRight
-              size={15}
-              className="group-hover:translate-x-1.5 transition-transform"
-            />
-          </a>
-        </div>
-      </div>
-
-      {/* ================= TRUSTED BY STRIP ================= */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full pt-6 border-t border-[#F8F3EF]/15">
-        <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10">
-          <div className="text-[11px] font-mono tracking-[0.2em] text-[#D03412] uppercase font-bold leading-relaxed shrink-0">
-            TRUSTED BY
-            <br />
-            BOLD BRANDS
-            <span className="block w-6 h-px bg-[#D03412]/60 mt-3" />
+            <p className="text-sm sm:text-base font-mono text-[#F8F3EF]/80 leading-relaxed border-l-2 border-[#D03412] pl-4">
+              We combine strategic brand building, bespoke web engineering, AI-powered video advertising, and performance marketing to move businesses forward.
+            </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-x-10 gap-y-4 lg:gap-x-14 grow">
-            {BRANDS.map((brand) => (
-              <span
-                key={brand}
-                className="text-sm md:text-base font-sans font-bold tracking-[0.12em] text-[#F8F3EF]/85 uppercase whitespace-nowrap"
+          {/* Service quick navigation filter */}
+          <div className="flex flex-wrap gap-2 text-xs font-mono">
+            <button
+              onClick={() => setActiveTab("all")}
+              className={`interactive px-3 py-1.5 rounded-sm uppercase tracking-wider transition-colors ${
+                activeTab === "all"
+                  ? "bg-[#D03412] text-white font-bold"
+                  : "bg-[#7C1117] text-[#F8F3EF]/70 hover:text-white border border-[#D03412]/30"
+              }`}
+            >
+              All Services
+            </button>
+            {SERVICES.map((s) => (
+              <button
+                key={s.id}
+                onClick={() => setActiveTab(s.id)}
+                className={`interactive px-3 py-1.5 rounded-sm uppercase tracking-wider transition-colors ${
+                  activeTab === s.id
+                    ? "bg-[#D03412] text-white font-bold"
+                    : "bg-[#7C1117] text-[#F8F3EF]/70 hover:text-white border border-[#D03412]/30"
+                }`}
               >
-                {brand}
-              </span>
+                {s.title}
+              </button>
             ))}
           </div>
-
-          <p className="text-[11px] font-sans text-[#F8F3EF]/65 leading-relaxed max-w-[15rem] shrink-0">
-            We partner with ambitious brands to create work that stands out and
-            performs.
-          </p>
         </div>
-      </div>
 
-      {/* Rotating stamp, bottom right */}
-      <div className="hidden xl:block absolute bottom-24 right-16 z-20">
-        <CircularStamp className="w-28 h-28" />
-      </div>
+        {/* 5 Distinct Service Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredServices.map((service) => {
+            const Icon = service.icon;
+            return (
+              <article
+                key={service.id}
+                className={`interactive relative bg-[#7C1117]/85 border p-8 rounded-sm flex flex-col justify-between space-y-6 group paper-grain transition-all duration-300 hover:-translate-y-1 shadow-2xl ${service.accent}`}
+              >
+                {/* Header row: Icon & Number */}
+                <div className="flex items-center justify-between">
+                  <div className="w-12 h-12 rounded-sm bg-[#5C0F14] border border-[#D03412]/40 flex items-center justify-center text-[#D03412] group-hover:bg-[#D03412] group-hover:text-white transition-colors">
+                    <Icon size={24} />
+                  </div>
+                  <div className="text-right">
+                    <span className="text-xs font-mono text-[#D03412] font-bold block">
+                      {service.num}
+                    </span>
+                    <span className="text-[10px] font-mono tracking-widest uppercase text-[#F8F3EF]/50">
+                      {service.category}
+                    </span>
+                  </div>
+                </div>
 
-      {/* Right edge scroll marker */}
-      <div className="hidden lg:flex absolute right-6 bottom-28 flex-col items-center gap-3 z-20 text-[#F8F3EF]/35 text-[10px] font-mono tracking-[0.25em]">
-        <div className="w-px h-16 bg-[#F8F3EF]/20" />
-        <span className="writing-mode-vertical uppercase">SCROLL</span>
+                {/* Title & Description */}
+                <div className="space-y-3">
+                  <h3 className="text-2xl font-editorial text-[#F8F3EF] tracking-tight group-hover:text-[#D03412] transition-colors leading-tight">
+                    {service.title}
+                  </h3>
+                  <p className="text-xs font-mono text-[#D03412] font-semibold tracking-wide">
+                    {service.summary}
+                  </p>
+                  <p className="text-xs font-mono text-[#F8F3EF]/75 leading-relaxed">
+                    {service.description}
+                  </p>
+                </div>
+
+                {/* Deliverables Bullet List */}
+                <div className="pt-4 border-t border-[#D03412]/20 space-y-2">
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#D03412] font-bold block mb-1">
+                    What We Deliver:
+                  </span>
+                  {service.deliverables.map((item, idx) => (
+                    <div
+                      key={idx}
+                      className="flex items-center gap-2 text-[11px] font-mono text-[#F8F3EF]/80"
+                    >
+                      <Check size={12} className="text-[#D03412] shrink-0" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Flagship Tag or Action */}
+                <div className="pt-2 flex items-center justify-between">
+                  {service.isFlagship ? (
+                    <span className="text-[9px] font-mono tracking-widest text-[#D03412] font-bold uppercase bg-[#D03412]/15 px-2.5 py-1 rounded-sm border border-[#D03412]/40">
+                      ★ STUDIO FLAGSHIP
+                    </span>
+                  ) : (
+                    <span className="text-[9px] font-mono tracking-widest text-[#F8F3EF]/50 uppercase">
+                      OUTKAST DISCIPLINE
+                    </span>
+                  )}
+
+                  <a
+                    href="#contact"
+                    className="interactive inline-flex items-center gap-1 text-xs font-mono tracking-widest text-[#F8F3EF] hover:text-[#D03412] transition-colors uppercase font-bold"
+                  >
+                    <span>ENQUIRE</span>
+                    <ArrowUpRight size={13} className="text-[#D03412]" />
+                  </a>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+
+        {/* Studio Standard Commitment Strip */}
+        <div className="pt-8 border-t border-[#D03412]/20 flex flex-col md:flex-row items-center justify-between gap-6 text-xs font-mono text-[#F8F3EF]/80">
+          <div className="flex items-center gap-3">
+            <span className="w-2 h-2 rounded-full bg-[#D03412]" />
+            <p>
+              Focused on <strong className="text-[#F8F3EF]">creative quality</strong> and{" "}
+              <strong className="text-[#D03412]">measurable business improvement</strong>.
+            </p>
+          </div>
+          <div className="flex items-center gap-6 text-[#F8F3EF]/60">
+            <span>NO COOKIE-CUTTER TEMPLATES</span>
+            <span>•</span>
+            <span>DIRECT SENIOR ATTENTION</span>
+          </div>
+        </div>
       </div>
     </section>
   );

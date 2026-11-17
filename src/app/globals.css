@@ -10,6 +10,12 @@
     --text-primary: #F8F3EF;
     --dark: #111111;
     --kraft: #D4B896;
+
+    /* Web Fonts with graceful system fallbacks */
+    --font-editorial: 'Syne', system-ui, -apple-system, sans-serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-brush: 'Permanent Marker', cursive, sans-serif;
+    --font-handwritten: 'Caveat', cursive, sans-serif;
   }
 
   * {

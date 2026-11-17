@@ -24,6 +24,7 @@ export type UgcReel = {
   img: string;
   video?: string;
   title: string;
+  label?: string;
 };
 
 interface UgcCarouselProps {
@@ -225,10 +226,13 @@ export default function UgcCarousel({ reels, onExpand, className }: UgcCarouselP
                     </>
                   )}
 
-                  {/* Category tag */}
-                  <div className="absolute bottom-2 left-2 right-2 z-10 rounded-md border border-white/10 bg-[#111111]/85 px-2 py-1.5 backdrop-blur-xs">
+                  {/* Category & Concept tag */}
+                  <div className="absolute bottom-2 left-2 right-2 z-10 rounded-md border border-white/10 bg-[#111111]/85 px-2.5 py-1.5 backdrop-blur-xs flex items-center justify-between gap-1">
                     <span className="block truncate text-[9px] font-mono font-bold uppercase tracking-widest text-[#D03412]">
                       {reel.category}
+                    </span>
+                    <span className="text-[8px] font-mono uppercase tracking-wider text-[#F8F3EF]/65 bg-white/5 px-1.5 py-0.5 rounded-xs shrink-0">
+                      {reel.label || "Concept Project"}
                     </span>
                   </div>
                 </div>

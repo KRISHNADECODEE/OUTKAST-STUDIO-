@@ -1,8 +1,14 @@
 import { SITE, FAQS } from "@/lib/site-data";
+import { BUSINESS_CONFIG } from "@/lib/business-config";
 
 /* Structured data for search and AI answer engines. Organization establishes
    who the agency is and what it sells; FAQPage gives engines pre-chunked
-   question/answer pairs they can quote directly. */
+   question/answer pairs they can quote directly; Service schemas establish local relevance. */
+
+const hasValidEmail =
+  Boolean(BUSINESS_CONFIG.officialEmail) &&
+  !BUSINESS_CONFIG.officialEmail.includes("[OWNER TO CONFIRM]") &&
+  BUSINESS_CONFIG.officialEmail.includes("@");
 
 const organization = {
   "@context": "https://schema.org",
@@ -12,19 +18,32 @@ const organization = {
   alternateName: "Outkast Studios",
   url: SITE.url,
   description: SITE.description,
-  email: SITE.email,
+  ...(hasValidEmail ? { email: BUSINESS_CONFIG.officialEmail } : {}),
   sameAs: SITE.sameAs,
-  areaServed: SITE.areaServed.map((c) => ({ "@type": "Country", name: c })),
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: BUSINESS_CONFIG.businessCountry,
+  },
+  areaServed: [
+    { "@type": "City", name: "Haridwar" },
+    { "@type": "City", name: "Rishikesh" },
+    { "@type": "Country", name: "India" },
+  ],
   knowsAbout: SITE.services,
   makesOffer: SITE.services.map((service) => ({
     "@type": "Offer",
-    itemOffered: { "@type": "Service", name: service, provider: { "@id": `${SITE.url}/#organization` } },
+    itemOffered: {
+      "@type": "Service",
+      name: service,
+      provider: { "@id": `${SITE.url}/#organization` },
+    },
   })),
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "sales",
-    email: SITE.email,
-    availableLanguage: ["English"],
+    url: `${SITE.url}/#contact`,
+    ...(hasValidEmail ? { email: BUSINESS_CONFIG.officialEmail } : {}),
+    availableLanguage: ["English", "Hindi"],
   },
 };
 
@@ -34,6 +53,7 @@ const website = {
   "@id": `${SITE.url}/#website`,
   url: SITE.url,
   name: SITE.name,
+  description: SITE.description,
   publisher: { "@id": `${SITE.url}/#organization` },
 };
 
@@ -48,14 +68,34 @@ const faqPage = {
   })),
 };
 
+const services = [
+  { name: "Brand Building", desc: "Brand identity, positioning, visual direction and storytelling for businesses across Haridwar, Rishikesh, and India." },
+  { name: "AI Video Advertising", desc: "AI UGC advertisements, product films and promotional videos for social media campaigns." },
+  { name: "Website Development", desc: "Custom portfolio websites, business websites and conversion-focused landing pages." },
+  { name: "Social Media Management", desc: "Content calendars, Reels production, account management and growth strategy." },
+  { name: "Meta Ads Management", desc: "Facebook and Instagram advertising, campaign management and performance optimisation." },
+].map((s, i) => ({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${SITE.url}/#service-${i}`,
+  name: s.name,
+  description: s.desc,
+  provider: { "@id": `${SITE.url}/#organization` },
+  areaServed: [
+    { "@type": "City", name: "Haridwar" },
+    { "@type": "City", name: "Rishikesh" },
+    { "@type": "Country", name: "India" },
+  ],
+  url: SITE.url,
+}));
+
 export default function JsonLd() {
   return (
     <>
-      {[organization, website, faqPage].map((schema, i) => (
+      {[organization, website, faqPage, ...services].map((schema, i) => (
         <script
           key={i}
           type="application/ld+json"
-          // Content is authored here, not user input; stringify keeps it valid JSON.
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
       ))}

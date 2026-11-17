@@ -1,52 +1,32 @@
 import type { Metadata } from "next";
-import { Syne, Plus_Jakarta_Sans, Permanent_Marker, Caveat } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import LoadingScreen from "@/components/LoadingScreen";
 import IdleAnimations from "@/components/IdleAnimations";
 import JsonLd from "@/components/JsonLd";
 
-const syne = Syne({
-  subsets: ["latin"],
-  variable: "--font-editorial",
-  weight: ["700", "800"],
-});
-
-const plusJakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  weight: ["400", "500", "600", "700"],
-});
-
-const permanentMarker = Permanent_Marker({
-  subsets: ["latin"],
-  variable: "--font-brush",
-  weight: "400",
-});
-
-const caveat = Caveat({
-  subsets: ["latin"],
-  variable: "--font-handwritten",
-  weight: ["600", "700"],
-});
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://outkast-studio.vercel.app"),
-  title: "OUTKAST STUDIOS | Creative Websites • AI Advertising • Brand Building",
+  title: "OUTKAST STUDIOS | Creative Growth Studio • Websites, AI Ads & Brand Building",
   description:
-    "We craft bold, high-performance websites and digital experiences for brands that don't follow trends, they set them. AI UGC Ads, Meta Ads, Brand Building.",
+    "We build brands that get noticed, digital experiences that build trust, and creative campaigns that move businesses forward. Custom websites, AI UGC advertising, brand building, social media, and Meta Ads.",
   keywords: [
+    "Creative agency India",
+    "AI video advertising agency",
+    "AI UGC ads India",
+    "Social media management agency",
+    "Brand building agency",
+    "Website development agency",
+    "Digital marketing agency",
+    "Creative Growth Studio",
+    "Meta Ads agency",
     "OUTKAST STUDIOS",
-    "Creative Agency",
-    "AI UGC Ads",
-    "Portfolio Websites",
-    "Brand Building",
-    "Meta Ads",
   ],
   authors: [{ name: "OUTKAST STUDIOS" }],
   openGraph: {
-    title: "OUTKAST STUDIOS | Creative Websites • AI Advertising",
-    description: "Creative Websites for Brands That Refuse To Look Ordinary.",
+    title: "OUTKAST STUDIOS | Creative Growth Studio",
+    description:
+      "We build brands that get noticed, digital experiences that build trust, and creative campaigns that move businesses forward.",
     url: "https://outkast-studio.vercel.app",
     siteName: "OUTKAST STUDIOS",
     locale: "en_US",
@@ -54,8 +34,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "OUTKAST STUDIOS | Creative Websites • AI Advertising",
-    description: "Creative Websites for Brands That Refuse To Look Ordinary.",
+    title: "OUTKAST STUDIOS | Creative Growth Studio",
+    description:
+      "We build brands that get noticed, digital experiences that build trust, and creative campaigns that move businesses forward.",
   },
   icons: {
     icon: [
@@ -84,8 +65,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${syne.variable} ${plusJakarta.variable} ${permanentMarker.variable} ${caveat.variable}`}>
+    <html lang="en">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Permanent+Marker&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap"
+          rel="stylesheet"
+        />
         <JsonLd />
       </head>
       <body className="bg-[#7C1117] text-[#F8F3EF] antialiased selection:bg-[#D03412] selection:text-white relative">

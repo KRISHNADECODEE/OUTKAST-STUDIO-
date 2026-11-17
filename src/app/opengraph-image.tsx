@@ -8,7 +8,7 @@ import path from "node:path";
    ========================================================================== */
 
 export const alt =
-  "OUTKAST STUDIOS — Creative Websites. AI Advertising. Brand Building.";
+  "OUTKAST STUDIOS — Creative Growth Studio. Websites, AI Advertising, Brand Building.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

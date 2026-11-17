@@ -2,22 +2,20 @@ import Navbar from "@/components/Navbar";
 import ScrollRail from "@/components/ScrollRail";
 import HeroSection from "@/components/sections/HeroSection";
 import WhatWeDoSection from "@/components/sections/WhatWeDoSection";
-import ApproachSection from "@/components/sections/ApproachSection";
-import ServicesSection from "@/components/sections/ServicesSection";
 import PortfolioSection from "@/components/sections/PortfolioSection";
-import WhySection from "@/components/sections/WhySection";
-import ResultsSection from "@/components/sections/ResultsSection";
 import AiUgcSection from "@/components/sections/AiUgcSection";
+import BrandBuildingSection from "@/components/sections/BrandBuildingSection";
+import WhySection from "@/components/sections/WhySection";
 import ProcessSection from "@/components/sections/ProcessSection";
-import TestimonialsSection from "@/components/sections/TestimonialsSection";
-import ResultsGrid from "@/components/sections/ResultsGrid";
+import HowWeWorkSection from "@/components/sections/HowWeWorkSection";
 import FaqSection from "@/components/sections/FaqSection";
 import FinalCtaSection from "@/components/sections/FinalCtaSection";
 import Footer from "@/components/sections/Footer";
+import FloatingWhatsApp from "@/components/ui/FloatingWhatsApp";
 import { SectionSeam } from "@/components/ui/PaperAssets";
 
 /* Section background colours, in page order — the seams tear from one into
-   the next, so these have to stay in sync with each section's own bg class. */
+   the next, staying strictly synchronized with each section's own background. */
 const DEEP = "#7C1117";
 const SURFACE = "#8D161D";
 const DARK = "#5C0F14";
@@ -32,47 +30,51 @@ export default function Home() {
       {/* Live section rail — the ring tracks the section you're reading */}
       <ScrollRail />
 
-      {/* 14 Sequential Editorial Sections, separated by torn paper seams */}
+      {/* SECTION 1: HERO */}
       <HeroSection />
       <SectionSeam from={DEEP} to={DARK} />
 
+      {/* SECTION 2: WHAT WE DO (5 Core Disciplines) */}
       <WhatWeDoSection />
       <SectionSeam from={DARK} to={DEEP} flip />
 
-      <ApproachSection />
-      <SectionSeam from={DEEP} to={SURFACE} />
-
-      <ServicesSection />
-      <SectionSeam from={SURFACE} to={DEEP} flip />
-
+      {/* SECTION 3: OUR WORK (Verified Portfolio Projects) */}
       <PortfolioSection />
       <SectionSeam from={DEEP} to={SURFACE} />
 
-      <WhySection />
-      <SectionSeam from={SURFACE} to={DEEP} flip />
-
-      <ResultsSection />
-      <SectionSeam from={DEEP} to={SURFACE} />
-
+      {/* SECTION 4: AI ADVERTISING SHOWCASE (Flagship AI Video Showcase) */}
       <AiUgcSection />
       <SectionSeam from={SURFACE} to={DEEP} flip />
 
+      {/* SECTION 5: BRAND BUILDING (External Creative Growth Partner) */}
+      <BrandBuildingSection />
+      <SectionSeam from={DEEP} to={SURFACE} />
+
+      {/* SECTION 6: WHY OUTKAST (Six Core Principles) */}
+      <WhySection />
+      <SectionSeam from={SURFACE} to={DEEP} flip />
+
+      {/* SECTION 7: OUR PROCESS (Interactive 6-Phase Timeline) */}
       <ProcessSection />
       <SectionSeam from={DEEP} to={SURFACE} />
 
-      <TestimonialsSection />
+      {/* SECTION 8: HOW WE WORK (Studio Operating Standards) */}
+      <HowWeWorkSection />
       <SectionSeam from={SURFACE} to={DEEP} flip />
 
-      <ResultsGrid />
+      {/* SECTION 9: FAQ (9 Transparent Answers) */}
+      <FaqSection />
       <SectionSeam from={DEEP} to={SURFACE} />
 
-      <FaqSection />
-      <SectionSeam from={SURFACE} to={DEEP} flip />
-
+      {/* SECTION 10: CONTACT & LEAD GENERATION (Working Brief Form & WhatsApp) */}
       <FinalCtaSection />
-      <SectionSeam from={DEEP} to={INK} />
+      <SectionSeam from={SURFACE} to={INK} />
 
+      {/* FOOTER */}
       <Footer />
+
+      {/* FLOATING WHATSAPP CONVERSION SYSTEM */}
+      <FloatingWhatsApp />
     </main>
   );
 }
