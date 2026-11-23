@@ -41,6 +41,7 @@ const organization = {
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "sales",
+    telephone: "+91-9528002988",
     url: `${SITE.url}/#contact`,
     ...(hasValidEmail ? { email: BUSINESS_CONFIG.officialEmail } : {}),
     availableLanguage: ["English", "Hindi"],

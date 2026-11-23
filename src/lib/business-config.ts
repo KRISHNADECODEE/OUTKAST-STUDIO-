@@ -38,6 +38,8 @@ export interface BusinessConfig {
   
   // Contact & Registration Information (Editable Placeholders)
   officialEmail: string;
+  phoneNumber: string;
+  phoneRaw: string;
   businessAddress: string;
   businessCity: string;
   businessState: string;
@@ -92,18 +94,20 @@ export const BUSINESS_CONFIG: BusinessConfig = {
   // Contact details — editable configuration fields
   // DO NOT invent arbitrary fake emails or addresses.
   officialEmail: "[OWNER TO CONFIRM]",
+  phoneNumber: "+91 95280 02988",
+  phoneRaw: "+919528002988",
   businessAddress: "[OWNER TO CONFIRM]",
   businessCity: "[OWNER TO CONFIRM]",
   businessState: "[OWNER TO CONFIRM]",
   businessCountry: "India",
 
   // Verified WhatsApp enquiry channel (e.g., "91XXXXXXXXXX")
-  whatsappNumber: "[OWNER TO CONFIRM]",
+  whatsappNumber: "919528002988",
   whatsappPrefilledMessage:
     "Hi Outkast Studios, I'm interested in discussing a project for my business. Please share more details about your services.",
 
   // Social Channels
-  instagramUrl: "https://www.instagram.com/outkast._.studio/",
+  instagramUrl: "https://www.instagram.com/outkast.studios.official/",
   behanceUrl: "[OWNER TO CONFIRM]",
   dribbbleUrl: "[OWNER TO CONFIRM]",
 
@@ -285,6 +289,20 @@ export function getSocialUrl(platform: "instagram" | "behance" | "dribbble"): {
 
   return {
     url: isConfigured ? val : "#contact",
+    isConfigured,
+  };
+}
+
+/**
+ * Returns safe direct phone call link and formatted display number.
+ */
+export function getPhoneHref(): { href: string; display: string; isConfigured: boolean } {
+  const rawNumber = BUSINESS_CONFIG.phoneRaw;
+  const isConfigured = Boolean(rawNumber) && rawNumber.length > 7;
+
+  return {
+    href: isConfigured ? `tel:${rawNumber}` : "#contact",
+    display: BUSINESS_CONFIG.phoneNumber || "+91 95280 02988",
     isConfigured,
   };
 }

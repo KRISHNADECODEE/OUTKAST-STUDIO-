@@ -7,7 +7,6 @@ import { Plus, Minus, MessageCircle, ArrowUpRight, ChevronRight, FileText, Check
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/sections/Footer";
 import ProjectModal from "@/components/ProjectModal";
-import FloatingWhatsApp from "@/components/ui/FloatingWhatsApp";
 import { BackgroundPattern, NoiseOverlay, TornEdge } from "@/components/ui/PaperAssets";
 import { BUSINESS_CONFIG, getWhatsAppUrl, getEmailHref } from "@/lib/business-config";
 
@@ -477,9 +476,6 @@ export default function LocalPageLayout({
 
       {/* Interactive Project Brief Modal */}
       <ProjectModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-
-      {/* Floating WhatsApp on Location Pages */}
-      <FloatingWhatsApp />
 
       <Footer />
     </div>

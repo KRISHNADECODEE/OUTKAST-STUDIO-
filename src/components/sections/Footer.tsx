@@ -3,11 +3,12 @@
 import React from "react";
 import Link from "next/link";
 import { OutkastLogo, CircularStamp } from "../ui/BrandAssets";
-import { Instagram, Mail, Globe, ArrowUpRight, MessageCircle } from "lucide-react";
-import { BUSINESS_CONFIG, getEmailHref, getSocialUrl, getWhatsAppUrl } from "@/lib/business-config";
+import { Instagram, Mail, Globe, ArrowUpRight, MessageCircle, Phone } from "lucide-react";
+import { BUSINESS_CONFIG, getEmailHref, getSocialUrl, getWhatsAppUrl, getPhoneHref } from "@/lib/business-config";
 
 export default function Footer() {
   const emailInfo = getEmailHref();
+  const phone = getPhoneHref();
   const instagram = getSocialUrl("instagram");
   const behance = getSocialUrl("behance");
   const dribbble = getSocialUrl("dribbble");
@@ -45,6 +46,17 @@ export default function Footer() {
               <div className="flex items-center gap-2 text-xs font-mono text-[#F8F3EF]/60">
                 <Globe size={14} className="text-[#D03412]" />
                 <span>{BUSINESS_CONFIG.locationDisplay}</span>
+              </div>
+
+              {/* Direct Studio Call */}
+              <div className="flex items-center gap-2 text-xs font-mono">
+                <a
+                  href={phone.href}
+                  className="interactive text-[#F8F3EF]/90 hover:text-[#D03412] transition-colors flex items-center gap-2 font-bold"
+                >
+                  <Phone size={14} className="text-[#D03412]" />
+                  <span>{phone.display}</span>
+                </a>
               </div>
 
               {/* WhatsApp direct if configured */}
@@ -172,7 +184,7 @@ export default function Footer() {
                     className="interactive hover:text-[#D03412] transition-colors flex items-center gap-1.5"
                   >
                     <Instagram size={14} className="text-[#D03412]" />
-                    <span>@outkast._.studio</span>
+                    <span>@outkast.studios.official</span>
                     <ArrowUpRight size={12} />
                   </a>
                 </li>

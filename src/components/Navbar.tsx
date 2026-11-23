@@ -3,12 +3,15 @@
 import React, { useState, useEffect } from "react";
 import { OutkastLogo } from "./ui/BrandAssets";
 import ProjectModal from "./ProjectModal";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, Instagram, Phone } from "lucide-react";
+import { getSocialUrl, getPhoneHref } from "@/lib/business-config";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const instagram = getSocialUrl("instagram");
+  const phone = getPhoneHref();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,8 +60,18 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Action Button */}
-          <div className="hidden sm:flex items-center gap-4">
+          {/* Action Button & Social */}
+          <div className="hidden sm:flex items-center gap-3">
+            <a
+              href={instagram.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow Outkast Studios on Instagram"
+              className="interactive p-2.5 text-[#F8F3EF]/80 hover:text-[#D03412] border border-[#F8F3EF]/15 hover:border-[#D03412] rounded-sm transition-all duration-300"
+            >
+              <Instagram size={15} />
+            </a>
+
             <button
               onClick={() => setIsModalOpen(true)}
               className="interactive px-5 py-2.5 text-xs font-mono tracking-widest text-[#F8F3EF] border border-[#D03412] hover:bg-[#D03412] transition-all duration-300 rounded-sm flex items-center gap-2 group shadow-lg hover:shadow-[#D03412]/30 font-bold"
@@ -104,6 +117,25 @@ export default function Navbar() {
           >
             START A PROJECT BRIEF ↗
           </button>
+
+          <div className="flex items-center gap-3 pt-3">
+            <a
+              href={phone.href}
+              className="interactive flex-1 py-3 px-3 bg-[#111111] border border-[#D03412]/50 text-center text-xs font-mono tracking-wider uppercase font-bold text-[#F8F3EF] rounded-sm flex items-center justify-center gap-2"
+            >
+              <Phone size={14} className="text-[#D03412]" />
+              <span>CALL: {phone.display}</span>
+            </a>
+            <a
+              href={instagram.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="interactive py-3 px-4 border border-[#D03412] text-[#F8F3EF] hover:bg-[#D03412] rounded-sm flex items-center justify-center transition-colors"
+            >
+              <Instagram size={18} />
+            </a>
+          </div>
         </div>
       )}
 

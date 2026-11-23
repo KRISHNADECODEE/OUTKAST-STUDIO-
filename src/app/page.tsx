@@ -11,7 +11,6 @@ import HowWeWorkSection from "@/components/sections/HowWeWorkSection";
 import FaqSection from "@/components/sections/FaqSection";
 import FinalCtaSection from "@/components/sections/FinalCtaSection";
 import Footer from "@/components/sections/Footer";
-import FloatingWhatsApp from "@/components/ui/FloatingWhatsApp";
 import { SectionSeam } from "@/components/ui/PaperAssets";
 
 /* Section background colours, in page order — the seams tear from one into
@@ -72,9 +71,6 @@ export default function Home() {
 
       {/* FOOTER */}
       <Footer />
-
-      {/* FLOATING WHATSAPP CONVERSION SYSTEM */}
-      <FloatingWhatsApp />
     </main>
   );
 }

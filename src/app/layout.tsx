@@ -4,6 +4,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import LoadingScreen from "@/components/LoadingScreen";
 import IdleAnimations from "@/components/IdleAnimations";
 import JsonLd from "@/components/JsonLd";
+import FloatingWhatsApp from "@/components/ui/FloatingWhatsApp";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://outkast-studio.vercel.app"),
@@ -95,6 +96,7 @@ export default function RootLayout({
         <LoadingScreen />
         <IdleAnimations />
         <SmoothScroll>{children}</SmoothScroll>
+        <FloatingWhatsApp />
       </body>
     </html>
   );
